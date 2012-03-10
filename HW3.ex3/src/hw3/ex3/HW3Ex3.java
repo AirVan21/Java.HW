@@ -43,7 +43,7 @@ public class HW3Ex3 {
                     break;
                 case four:
                     strIn = JOptionPane.showInputDialog("Please, input the value,that you wanna check");
-                    hash.hashEntry(strIn);
+                    JOptionPane.showMessageDialog(null, Boolean.toString(hash.exists(strIn)));
                     answer = Integer.parseInt(JOptionPane.showInputDialog("Please, input a Key - number"));
                     break;
             }

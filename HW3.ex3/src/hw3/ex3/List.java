@@ -2,7 +2,6 @@ package hw3.ex3;
 
 import javax.swing.JOptionPane;
 
-
 public class List {
     
     /** constructor
@@ -88,14 +87,14 @@ public class List {
      * @param value element value
      */
     public void deleteElement(String value) {
-        ListElement current = head.next;
         ListElement previous = head;
-        if (previous.value == value) {
+        ListElement current = head.next;
+        if (previous.value.equals(value)) {
             head = head.next;
             count--;
         } else {
             while (current != tail.next) {
-                if (current.value == value) {
+                if (current.value.equals(value)) {
                     ListElement help = current.next;
                     previous.next = help;
                     previous = help;
@@ -135,7 +134,7 @@ public class List {
     /** check for existing  
      * @param value element value
      */
-    public boolean listEntry(String value) {
+    public boolean exists(String value) {
         if (!isEmpty()) {
             ListElement current = head;
             while (current != tail.next) {
@@ -147,7 +146,7 @@ public class List {
         }
         return false;
     }
-    
+
     private ListElement head;
     
     private ListElement tail;

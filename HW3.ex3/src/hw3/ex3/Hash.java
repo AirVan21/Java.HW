@@ -14,7 +14,7 @@ public class Hash {
         }
     }
     
-    public List hashTable[];
+    private List hashTable[];
     
     /**
      * Add element to hashTable 
@@ -31,23 +31,21 @@ public class Hash {
      */
     public void deleteElement(String value) {
         int codeValue = Math.abs(value.hashCode() % length);
-        if (hashTable[codeValue].listEntry(value)) {
+        if (exists(value)) {
             hashTable[codeValue].deleteElement(value);
-        } else {
-            JOptionPane.showMessageDialog(null, "This element wasn't found !");
-        }
+        } 
     }
     
     /**
      * cheking element for existing in hash
      * @param value element value 
      */
-    public void hashEntry(String value) {
+    public boolean exists(String value) {
         int codeValue = Math.abs(value.hashCode() % length);
-        if (hashTable[codeValue].listEntry(value)) {
-            JOptionPane.showMessageDialog(null, "Yes, it's here!");
+        if (hashTable[codeValue].exists(value)) {
+            return true;
         } else {
-            JOptionPane.showMessageDialog(null, "This element wasn't found !");
+            return false;
         }
 
     }
@@ -60,7 +58,6 @@ public class Hash {
                 hashTable[i].output();
             }
         }
-         JOptionPane.showMessageDialog(null, "Take a look at the console!");
     }
     private final int length = 31;
 }

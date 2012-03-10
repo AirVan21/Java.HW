@@ -2,11 +2,11 @@ package hw3.ex3;
 
 public class ListElement {
 
-    public int value;
+    public String value;
     
     public ListElement next;
     
-    public ListElement(int value) {
+    public ListElement(String value) {
         this.next = null;
         this.value = value;
     }
