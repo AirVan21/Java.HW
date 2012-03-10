@@ -3,16 +3,19 @@ package hw3.ex3;
 import javax.swing.JOptionPane;
 
 public class List {
-    
-    /** constructor
+
+    /**
+     * constructor
      */
     public List() {
         head = null;
         tail = null;
         count = 0;
     }
-    
-    /** addition to the end 
+
+    /**
+     * addition to the end
+     *
      * @param value element value
      */
     public void addToEnd(String value) {
@@ -20,13 +23,15 @@ public class List {
         if (count == 0) {
             head = current;
         } else {
-            tail.next = current;
+            tail.connectNext(tail, current);
         }
         tail = current;
         count++;
     }
 
-    /** addition to the beginning
+    /**
+     * addition to the beginning
+     *
      * @param value element value
      */
     public void addToStart(String value) {
@@ -37,121 +42,117 @@ public class List {
         } else {
             ListElement help = head;
             head = current;
-            head.next = help;
+            current.connectNext(current, help);
         }
         count++;
     }
-    
-    /** addition to the selected place 
-     * @param place place number
+
+    /**
+     * get selected element value
+     *
      * @param value element value
      */
-    public void addToPosition(int place, String value) {
-        ListElement current = new ListElement(value);
-        int nextCount = count + 1;
-        if (place == first) {
-            addToStart(value);
-        } else  if (place == nextCount) {
-            addToEnd(value);
-        } else if (place < nextCount) {        
-            ListElement help = head;
-            ListElement previous = head;
-            for (int i = 1; i < place; i++) {
-                previous = help;
-                help = help.next;
-            }
-            previous.next = current;
-            current.next = help;
-            count++;       
-        } else {
-            System.out.println("Wrong place!");
-        }                        
-    }
-    
-    /** get selected element value  
-     @param value element value 
-     */  
     public String getValue(int place) {
         ListElement current = head;
         if (place <= count) {
             for (int i = 1; i < place; i++) {
-                current = current.next;
+                ListElement help = current.next(current);
+                current = help;
             }
-            return current.value;
+            return current.getValue();
         } else {
             return "error";
         }
     }
 
-    /** delete selected element 
+    /**
+     * delete selected element
+     *
      * @param value element value
      */
     public void deleteElement(String value) {
         ListElement previous = head;
-        ListElement current = head.next;
-        if (previous.value.equals(value)) {
-            head = head.next;
+        ListElement current = head.next(head);
+        if (previous.getValue().equals(value)) {
+            ListElement help = head.next(head);
+            head = help;
             count--;
         } else {
-            while (current != tail.next) {
-                if (current.value.equals(value)) {
-                    ListElement help = current.next;
-                    previous.next = help;
+            while (current != end) {
+                if (current.getValue().equals(value)) {
+                    ListElement help = current.next(current);
+                    previous.connectNext(previous, help);
                     previous = help;
-                    current = help.next;
+                    current = help.next(help);
                     count--;
                 } else {
                     previous = current;
-                    current = current.next;
+                    ListElement help = current.next(current);
+                    current = help;
                 }
             }
         }
     }
-    
-    /** List deletion*/
+
+    /**
+     * List deletion
+     */
     public void deleteList() {
         head = null;
     }
 
-    /** List output */
+    /**
+     * List output
+     */
     public void output() {
         ListElement current = head;
-        while (current != tail.next) {
-            System.out.print(current.value + " ");
-            current = current.next;
+        while (current != end) {
+            System.out.print(current.getValue() + " ");
+            ListElement help = current.next(current);
+            current = help;
         }
         System.out.println();
     }
 
-    /** get the List length */
+    /**
+     * get the List length
+     */
     public int listAmount() {
         return count;
     }
-    /** check for void */
+
+    /**
+     * check for void
+     */
     public boolean isEmpty() {
         return count == 0;
     }
-    /** check for existing  
+
+    /**
+     * check for existing
+     *
      * @param value element value
      */
     public boolean exists(String value) {
         if (!isEmpty()) {
             ListElement current = head;
-            while (current != tail.next) {
-                if (current.value.equals(value)) {
+            while (current != end) {
+                if (current.getValue().equals(value)) {
                     return true;
                 }
-                current = current.next;
+                ListElement help = current.next(current);
+                current = help;
             }
         }
         return false;
     }
-
     private ListElement head;
     
     private ListElement tail;
     
     private int count;
+    
+    private ListElement end = null;
     
     private final int first = 1;
 }
