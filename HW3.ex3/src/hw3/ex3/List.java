@@ -1,9 +1,9 @@
 package hw3.ex3;
 
+import javax.swing.JOptionPane;
+
 
 public class List {
-    
-    public final int error = 100500;
     
     /** constructor
      */
@@ -16,7 +16,7 @@ public class List {
     /** addition to the end 
      * @param value element value
      */
-    public void addToEnd(int value) {
+    public void addToEnd(String value) {
         ListElement current = new ListElement(value);
         if (count == 0) {
             head = current;
@@ -30,7 +30,7 @@ public class List {
     /** addition to the beginning
      * @param value element value
      */
-    public void addToStart(int value) {
+    public void addToStart(String value) {
         ListElement current = new ListElement(value);
         if (count == 0) {
             head = current;
@@ -47,7 +47,7 @@ public class List {
      * @param place place number
      * @param value element value
      */
-    public void addToPosition(int place, int value) {
+    public void addToPosition(int place, String value) {
         ListElement current = new ListElement(value);
         int nextCount = count + 1;
         if (place == first) {
@@ -72,7 +72,7 @@ public class List {
     /** get selected element value  
      @param value element value 
      */  
-    public int getValue(int place) {
+    public String getValue(int place) {
         ListElement current = head;
         if (place <= count) {
             for (int i = 1; i < place; i++) {
@@ -80,14 +80,14 @@ public class List {
             }
             return current.value;
         } else {
-            return error;
+            return "error";
         }
     }
 
     /** delete selected element 
      * @param value element value
      */
-    public void deleteElement(int value) {
+    public void deleteElement(String value) {
         ListElement current = head.next;
         ListElement previous = head;
         if (previous.value == value) {
@@ -118,7 +118,7 @@ public class List {
     public void output() {
         ListElement current = head;
         while (current != tail.next) {
-            System.out.print(Integer.toString(current.value) + " ");
+            System.out.print(current.value + " ");
             current = current.next;
         }
         System.out.println();
@@ -135,11 +135,14 @@ public class List {
     /** check for existing  
      * @param value element value
      */
-    public boolean listEntry(int value) {
-        ListElement current = head;
-        while (current != tail.next) {
-            if (current.value == value) {
-                return true;
+    public boolean listEntry(String value) {
+        if (!isEmpty()) {
+            ListElement current = head;
+            while (current != tail.next) {
+                if (current.value.equals(value)) {
+                    return true;
+                }
+                current = current.next;
             }
         }
         return false;
