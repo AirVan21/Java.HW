@@ -3,7 +3,10 @@ package hw3.ex3;
 import javax.swing.JOptionPane;
 
 public class Hash {
-
+    
+    /**
+     * hash table constructor
+     */
     public Hash() {
         hashTable = new List[length];
         for (int i = 0; i < length; i++) {
@@ -12,12 +15,20 @@ public class Hash {
     }
     
     public List hashTable[];
-
+    
+    /**
+     * Add element to hashTable 
+     * @param value element value
+     */
     public void addElement(String value) {
         int codeValue = Math.abs(value.hashCode() % length);
         hashTable[codeValue].addToEnd(value);
     }
-
+    
+    /**
+     *delete element from hash 
+     * @param value element value 
+     */
     public void deleteElement(String value) {
         int codeValue = Math.abs(value.hashCode() % length);
         if (hashTable[codeValue].listEntry(value)) {
@@ -26,7 +37,11 @@ public class Hash {
             JOptionPane.showMessageDialog(null, "This element wasn't found !");
         }
     }
-
+    
+    /**
+     * cheking element for existing in hash
+     * @param value element value 
+     */
     public void hashEntry(String value) {
         int codeValue = Math.abs(value.hashCode() % length);
         if (hashTable[codeValue].listEntry(value)) {
@@ -36,7 +51,9 @@ public class Hash {
         }
 
     }
-
+    /**
+     * showing all hash elements
+     */
     public void hashOutput() {
         for (int i = 0; i < length; i++) {
             if (!hashTable[i].isEmpty()) {
