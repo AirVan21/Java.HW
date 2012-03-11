@@ -14,8 +14,6 @@ public class Hash {
         }
     }
     
-    private List hashTable[];
-    
     /**
      * Add element to hashTable 
      * @param value element value
@@ -42,13 +40,9 @@ public class Hash {
      */
     public boolean exists(String value) {
         int codeValue = Math.abs(value.hashCode() % length);
-        if (hashTable[codeValue].exists(value)) {
-            return true;
-        } else {
-            return false;
-        }
-
+        return hashTable[codeValue].exists(value);
     }
+    
     /**
      * showing all hash elements
      */
@@ -59,5 +53,8 @@ public class Hash {
             }
         }
     }
+    
     private final int length = 31;
+    
+    private List hashTable[];
 }
