@@ -23,7 +23,7 @@ public class List {
         if (count == 0) {
             head = current;
         } else {
-            tail.connectNext(tail, current);
+            tail.connectNext(current);
         }
         tail = current;
         count++;
@@ -40,9 +40,8 @@ public class List {
             head = current;
             tail = current;
         } else {
-            ListElement help = head;
+            current.connectNext(head);
             head = current;
-            current.connectNext(current, help);
         }
         count++;
     }
@@ -56,8 +55,7 @@ public class List {
         ListElement current = head;
         if (place <= count) {
             for (int i = 1; i < place; i++) {
-                ListElement help = current.next(current);
-                current = help;
+                current = current.next();
             }
             return current.getValue();
         } else {
@@ -72,23 +70,21 @@ public class List {
      */
     public void deleteElement(String value) {
         ListElement previous = head;
-        ListElement current = head.next(head);
+        ListElement current = head.next();
         if (previous.getValue().equals(value)) {
-            ListElement help = head.next(head);
-            head = help;
+            head = head.next();
             count--;
         } else {
             while (current != end) {
                 if (current.getValue().equals(value)) {
-                    ListElement help = current.next(current);
-                    previous.connectNext(previous, help);
+                    ListElement help = current.next();
+                    previous.connectNext(help);
                     previous = help;
-                    current = help.next(help);
+                    current = help.next();
                     count--;
                 } else {
                     previous = current;
-                    ListElement help = current.next(current);
-                    current = help;
+                    current = current.next();
                 }
             }
         }
@@ -108,8 +104,7 @@ public class List {
         ListElement current = head;
         while (current != end) {
             System.out.print(current.getValue() + " ");
-            ListElement help = current.next(current);
-            current = help;
+            current = current.next();
         }
         System.out.println();
     }
@@ -140,8 +135,7 @@ public class List {
                 if (current.getValue().equals(value)) {
                     return true;
                 }
-                ListElement help = current.next(current);
-                current = help;
+                current = current.next();
             }
         }
         return false;
@@ -154,5 +148,4 @@ public class List {
     
     private ListElement end = null;
     
-    private final int first = 1;
 }

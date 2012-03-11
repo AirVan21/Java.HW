@@ -19,8 +19,8 @@ public class ListElement {
      * @param current selected element
      * @return 
      */
-    public ListElement next(ListElement current) {
-        return current.next;
+    public ListElement next() {
+        return next;
     }
     
     /**
@@ -28,8 +28,8 @@ public class ListElement {
      * @param connect element which shoul be connected
      * @param value  connection place
      */
-    public void connectNext(ListElement connect, ListElement value) {
-        connect.next = value;
+    public void connectNext(ListElement value) {
+        next = value;
     }
             
     private String value;
