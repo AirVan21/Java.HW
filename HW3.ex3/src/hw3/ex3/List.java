@@ -94,6 +94,7 @@ public class List {
      * List deletion
      */
     public void deleteList() {
+        count = 0;
         head = null;
     }
 
