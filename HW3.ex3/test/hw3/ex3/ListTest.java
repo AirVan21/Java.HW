@@ -37,8 +37,6 @@ public class ListTest {
      */
     @Test
     public void testAddToEnd() {
-        String valueOne = "test";
-        String valueTwo = "problem";
         int first = 1;
         int second = 2;
         List list = new List();
@@ -53,8 +51,6 @@ public class ListTest {
      */
     @Test
     public void testAddToStart() {
-        String valueOne = "test";
-        String valueTwo = "problem";
         int first = 1;
         int second = 2;
         List list = new List();
@@ -71,7 +67,6 @@ public class ListTest {
     public void testGetValue() {
         int place = 1;
         List list = new List();
-        String valueOne = "test";
         list.addToEnd(valueOne);
         String result = list.getValue(place);
         assertEquals(valueOne, result);
@@ -83,8 +78,6 @@ public class ListTest {
     @Test
     public void testDeleteElement() {
         List list = new List();
-        String valueOne = "test";
-        String valueTwo = "problem";
         Boolean answer = true;
         list.addToEnd(valueOne);
         list.addToEnd(valueTwo);
@@ -100,7 +93,6 @@ public class ListTest {
     public void testDeleteList() {
         List list = new List();
         boolean answer = false;
-        String valueOne = "test";
         list.addToEnd(valueOne);
         assertEquals(list.isEmpty(), answer);
         list.deleteList();
@@ -113,8 +105,6 @@ public class ListTest {
     @Test
     public void testOutput() {
         List list = new List();
-        String valueOne = "test";
-        String valueTwo = "problem";
         list.addToEnd(valueOne);
         list.addToEnd(valueTwo);
         list.output();
@@ -126,8 +116,6 @@ public class ListTest {
     @Test
     public void testListAmount() {
         List list = new List();
-        String valueOne = "test";
-        String valueTwo = "problem";
         int amount = 2;
         list.addToEnd(valueOne);
         list.addToEnd(valueTwo);
@@ -140,7 +128,6 @@ public class ListTest {
     @Test
     public void testIsEmpty() {
         List list = new List();
-        String valueOne = "test";
         boolean answer = false;
         list.addToEnd(valueOne);
         assertEquals(list.isEmpty(), answer);
@@ -155,10 +142,12 @@ public class ListTest {
     @Test
     public void testExists() {
         List list = new List();
-        String valueOne = "test";
         boolean answer = true;
         assertEquals(list.isEmpty(), answer);
         list.addToEnd(valueOne);
         assertEquals(list.isEmpty(), !answer);
     }
+    
+    private final String valueOne = "test";
+    private final String valueTwo = "problem";
 }
