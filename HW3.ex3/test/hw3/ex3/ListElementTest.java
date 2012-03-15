@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author AirVan
  */
 public class ListElementTest {
-    
+
     public ListElementTest() {
     }
 
@@ -23,11 +23,11 @@ public class ListElementTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -37,13 +37,8 @@ public class ListElementTest {
      */
     @Test
     public void testGetValue() {
-        System.out.println("getValue");
-        ListElement instance = null;
-        String expResult = "";
-        String result = instance.getValue();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ListElement test = new ListElement(valueOne);
+        assertEquals(valueOne, test.getValue());
     }
 
     /**
@@ -51,13 +46,10 @@ public class ListElementTest {
      */
     @Test
     public void testNext() {
-        System.out.println("next");
-        ListElement instance = null;
-        ListElement expResult = null;
-        ListElement result = instance.next();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ListElement test = new ListElement(valueOne);
+        ListElement connected = new ListElement(valueTwo);
+        test.connectNext(connected);
+        assertEquals(connected, test.next());
     }
 
     /**
@@ -65,11 +57,14 @@ public class ListElementTest {
      */
     @Test
     public void testConnectNext() {
-        System.out.println("connectNext");
-        ListElement value = null;
-        ListElement instance = null;
-        instance.connectNext(value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ListElement test = new ListElement(valueOne);
+        ListElement connected = new ListElement(valueTwo);
+        test.connectNext(connected);
+        assertEquals(connected, test.next());
     }
+
+    private final String valueOne = "test";
+    
+    private final String valueTwo = "problem";
+    
 }

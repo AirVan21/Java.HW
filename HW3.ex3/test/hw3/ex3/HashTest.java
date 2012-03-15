@@ -37,12 +37,13 @@ public class HashTest {
      */
     @Test
     public void testAddElement() {
-        System.out.println("addElement");
-        String value = "";
-        Hash instance = new Hash();
-        instance.addElement(value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Hash hash = new Hash();
+        boolean answer = false;
+        assertEquals(answer, hash.exists(valueOne));
+        hash.addElement(valueOne);
+        hash.addElement(valueTwo);
+        assertEquals(!answer, hash.exists(valueOne));
+        assertEquals(!answer, hash.exists(valueTwo));
     }
 
     /**
@@ -50,12 +51,13 @@ public class HashTest {
      */
     @Test
     public void testDeleteElement() {
-        System.out.println("deleteElement");
-        String value = "";
-        Hash instance = new Hash();
-        instance.deleteElement(value);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Hash hash = new Hash();
+        boolean answer = true;
+        hash.addElement(valueOne);
+        hash.addElement(valueTwo);
+        assertEquals(answer, hash.exists(valueOne));
+        hash.deleteElement(valueOne);
+        assertEquals(!answer, hash.exists(valueOne));
     }
 
     /**
@@ -63,25 +65,14 @@ public class HashTest {
      */
     @Test
     public void testExists() {
-        System.out.println("exists");
-        String value = "";
-        Hash instance = new Hash();
-        boolean expResult = false;
-        boolean result = instance.exists(value);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       Hash hash = new Hash();
+        boolean answer = false;
+        assertEquals(answer, hash.exists(valueOne));
+        hash.addElement(valueOne);
+        assertEquals(!answer, hash.exists(valueOne));
     }
-
-    /**
-     * Test of hashOutput method, of class Hash.
-     */
-    @Test
-    public void testHashOutput() {
-        System.out.println("hashOutput");
-        Hash instance = new Hash();
-        instance.hashOutput();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
+    private final String valueOne = "test";
+    
+    private final String valueTwo = "problem";
 }

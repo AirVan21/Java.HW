@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * @author AirVan
  */
 public class ListTest {
-    
+
     public ListTest() {
     }
 
@@ -23,11 +23,11 @@ public class ListTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -41,9 +41,9 @@ public class ListTest {
         int second = 2;
         List list = new List();
         list.addToEnd(valueOne);
-        assertEquals(list.getValue(first), valueOne);
+        assertEquals(valueOne, list.getValue(first));
         list.addToEnd(valueTwo);
-        assertEquals(list.getValue(second), valueTwo);
+        assertEquals(valueTwo, list.getValue(second));
     }
 
     /**
@@ -56,8 +56,8 @@ public class ListTest {
         List list = new List();
         list.addToStart(valueOne);
         list.addToStart(valueTwo);
-        assertEquals(list.getValue(first), valueTwo);
-        assertEquals(list.getValue(second), valueOne);
+        assertEquals(valueTwo, list.getValue(first));
+        assertEquals(valueOne, list.getValue(second));
     }
 
     /**
@@ -69,7 +69,7 @@ public class ListTest {
         List list = new List();
         list.addToEnd(valueOne);
         String result = list.getValue(place);
-        assertEquals(valueOne, result);
+        assertEquals(result, valueOne);
     }
 
     /**
@@ -81,9 +81,9 @@ public class ListTest {
         Boolean answer = true;
         list.addToEnd(valueOne);
         list.addToEnd(valueTwo);
-        assertEquals(list.exists(valueOne), answer);
+        assertEquals(answer, list.exists(valueOne));
         list.deleteElement(valueOne);
-        assertEquals(list.exists(valueOne), !answer);
+        assertEquals(!answer, list.exists(valueOne));
     }
 
     /**
@@ -94,20 +94,9 @@ public class ListTest {
         List list = new List();
         boolean answer = false;
         list.addToEnd(valueOne);
-        assertEquals(list.isEmpty(), answer);
+        assertEquals(answer, list.isEmpty());
         list.deleteList();
-        assertEquals(list.isEmpty(), !answer);
-    }
-
-    /**
-     * Test of output method, of class List.
-     */
-    @Test
-    public void testOutput() {
-        List list = new List();
-        list.addToEnd(valueOne);
-        list.addToEnd(valueTwo);
-        list.output();
+        assertEquals(!answer, list.isEmpty());
     }
 
     /**
@@ -119,7 +108,7 @@ public class ListTest {
         int amount = 2;
         list.addToEnd(valueOne);
         list.addToEnd(valueTwo);
-        assertEquals(list.listAmount(), amount);
+        assertEquals(amount, list.listAmount());
     }
 
     /**
@@ -130,10 +119,10 @@ public class ListTest {
         List list = new List();
         boolean answer = false;
         list.addToEnd(valueOne);
-        assertEquals(list.isEmpty(), answer);
+        assertEquals(answer, list.isEmpty());
         list.deleteElement(valueOne);
-        assertEquals(list.isEmpty(), !answer);
-  
+        assertEquals(!answer, list.isEmpty());
+
     }
 
     /**
@@ -143,11 +132,12 @@ public class ListTest {
     public void testExists() {
         List list = new List();
         boolean answer = true;
-        assertEquals(list.isEmpty(), answer);
+        assertEquals(answer, list.isEmpty());
         list.addToEnd(valueOne);
-        assertEquals(list.isEmpty(), !answer);
+        assertEquals(!answer, list.isEmpty());
     }
-    
+
     private final String valueOne = "test";
+    
     private final String valueTwo = "problem";
 }
