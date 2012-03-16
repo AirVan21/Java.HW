@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author AirVan
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({hw3.ex3.ListTest.class, hw3.ex3.HashTest.class, hw3.ex3.ListElementTest.class, hw3.ex3.HW3Ex3Test.class})
+@Suite.SuiteClasses({hw3.ex3.ListTest.class, hw3.ex3.HashTest.class, hw3.ex3.ListElementTest.class})
 public class Ex3Suite {
 
     @BeforeClass
