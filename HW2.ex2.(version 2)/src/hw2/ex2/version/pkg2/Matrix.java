@@ -8,7 +8,9 @@ import java.util.Random;
  * @author AirVan
  */
 public class Matrix {
+    
     /**
+     * 
      * Constructor
      * @param length Table width 
      */
@@ -38,7 +40,9 @@ public class Matrix {
         for (int i = 0; i < column.length; i++) {
             for (int j = 1; j < column.length; j++) {
                 if (column[j].top() < column[j - 1].top()) {
-                    swapStack(column[j], column[j - 1]);
+                    StackElement help = column[j].getHead();
+                    column[j].setNewHead(column[j - 1].getHead());
+                    column[j - 1].setNewHead(help);
                 }
             }
         }

@@ -15,17 +15,16 @@ public class Stack {
      */
     public void push(int value) {
         StackElement lastAdded = new StackElement();
-        lastAdded.value = value;
-        lastAdded.next = head;
+        lastAdded.setNewValue(value);
+        lastAdded.SetNewNext(head);
         head = lastAdded;
-
     }
 
     /**
      * Change head elemnt
      */
     public void pop() {
-        head = head.next;
+        head.SetNewNext(head.nextReturn());
     }
 
     /**
@@ -33,7 +32,7 @@ public class Stack {
      * @return int top element value
      */
     public int top() {
-        return head.value;
+        return head.getValue();
 
     }
     
@@ -59,17 +58,6 @@ public class Stack {
     public void setNewHead(StackElement newHead) {
         this.head = newHead;
     }
-    
-    /**
-     * Changes stacks' heads
-     * @param stack1 first stack
-     * @param stack2 second stack
-     */
-    public void swapStack(Stack stack1, Stack stack2) {
-        StackElement help = stack1.getHead();
-        stack1.setNewHead(stack2.getHead());
-        stack2.setNewHead(help);
-    }
-    
+   
     private StackElement head;
 }
