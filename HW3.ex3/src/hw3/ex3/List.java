@@ -75,7 +75,7 @@ public class List {
             head = head.next();
             count--;
         } else {
-            while (current != end) {
+            while (current != tail.next()) {
                 if (current.getValue().equals(value)) {
                     ListElement help = current.next();
                     previous.connectNext(help);
@@ -96,6 +96,7 @@ public class List {
     public void deleteList() {
         count = 0;
         head = null;
+        tail = null;
     }
 
     /**
@@ -103,7 +104,7 @@ public class List {
      */
     public void output() {
         ListElement current = head;
-        while (current != end) {
+        while (current != tail.next()) {
             System.out.print(current.getValue() + " ");
             current = current.next();
         }
@@ -132,7 +133,7 @@ public class List {
     public boolean exists(String value) {
         if (!isEmpty()) {
             ListElement current = head;
-            while (current != end) {
+            while (current != tail.next()) {
                 if (current.getValue().equals(value)) {
                     return true;
                 }
@@ -147,6 +148,5 @@ public class List {
     
     private int count;
     
-    private ListElement end = null;
     
 }
