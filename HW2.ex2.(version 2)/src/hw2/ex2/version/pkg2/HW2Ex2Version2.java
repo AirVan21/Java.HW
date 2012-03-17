@@ -9,6 +9,7 @@ public class HW2Ex2Version2 {
         Matrix matrix = new Matrix(length);
         matrix.fillMatrix();
         matrix.output();
+        System.out.println();
         matrix.sortMatrixOnFirst();
         matrix.output();
     }

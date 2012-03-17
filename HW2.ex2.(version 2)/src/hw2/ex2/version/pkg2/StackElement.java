@@ -14,7 +14,7 @@ public class StackElement {
      * Return next stack element
      */
     public StackElement nextReturn() {
-        return next;
+        return this.next;
     }
     
     /**
@@ -29,9 +29,10 @@ public class StackElement {
      * Set new next value
      * @param newNext  element's new next value
      */
-    public void SetNewNext(StackElement newNext) {
-        next = newNext;
+    public void setNewNext(StackElement newNext) {
+        this.next = newNext;
     }
+    
     
     private int value;
     

@@ -1,4 +1,3 @@
-
 package hw2.ex2.version.pkg2;
 
 import java.util.Random;
@@ -27,7 +26,7 @@ public class Matrix {
     public void fillMatrix() {
         Random generator = new Random();
         for (int i = 0; i < column.length; i++) {
-            for (int j = 0; j <column.length; i++) {
+            for (int j = 0; j <column.length; j++) {
                  column[i].push(generator.nextInt(9) + 1);
             }    
         }
@@ -52,12 +51,21 @@ public class Matrix {
      * Just output
      */
     public void output() {
+        StackElement[] headSaver = new StackElement[column.length];
+        for (int k = 0; k < column.length; k++) {
+            headSaver[k] = column[k].getHead();
+        }
+        
         for (int i = 0; i < column.length; i++) {
-            for (int j = 1; j < column.length; j++) {
+            for (int j = 0; j < column.length; j++) {
                 System.out.print(Integer.toString(column[j].top()));
                 column[j].pop();
             }
             System.out.println();
+        }
+        
+        for (int k = 0; k < column.length; k++) {
+            column[k].setNewHead(headSaver[k]);
         }
     }
     

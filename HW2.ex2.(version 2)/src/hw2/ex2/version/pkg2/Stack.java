@@ -16,7 +16,7 @@ public class Stack {
     public void push(int value) {
         StackElement lastAdded = new StackElement();
         lastAdded.setNewValue(value);
-        lastAdded.SetNewNext(head);
+        lastAdded.setNewNext(head);
         head = lastAdded;
     }
 
@@ -24,7 +24,8 @@ public class Stack {
      * Change head elemnt
      */
     public void pop() {
-        head.SetNewNext(head.nextReturn());
+        StackElement help = head.nextReturn();
+        head = help;
     }
 
     /**
@@ -58,6 +59,6 @@ public class Stack {
     public void setNewHead(StackElement newHead) {
         this.head = newHead;
     }
-   
+    
     private StackElement head;
 }
