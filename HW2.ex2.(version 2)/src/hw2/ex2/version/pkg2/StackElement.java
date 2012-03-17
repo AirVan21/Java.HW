@@ -10,14 +10,25 @@ public class StackElement {
         return value;
     }
     
+    /**
+     * Return next stack element
+     */
     public StackElement nextReturn() {
         return next;
     }
     
+    /**
+     * Set new value for the element
+     * @param value element's new value
+     */
     public void setNewValue(int value) {
         this.value = value;
     }
     
+    /**
+     * Set new next value
+     * @param newNext  element's new next value
+     */
     public void SetNewNext(StackElement newNext) {
         next = newNext;
     }
