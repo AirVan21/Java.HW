@@ -7,7 +7,7 @@ public class Hash {
     /**
      * hash table constructor
      */
-    public Hash(HashFunctionInterface hashCounter) {
+    public Hash(HashFunction hashCounter) {
         this.hashTable = new List[length];
         for (int i = 0; i < length; i++) {
             hashTable[i] = new List();
@@ -58,5 +58,5 @@ public class Hash {
     
     private List hashTable[];
     
-    private HashFunctionInterface hashCounter;
+    private HashFunction hashCounter;
 }
