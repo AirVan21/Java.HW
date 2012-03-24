@@ -35,15 +35,15 @@ public class HashTest {
     public void testAddElement() {
         MyOwnHashFunction hashCounter1 = new MyOwnHashFunction();
         Hash hash1 = new Hash(hashCounter1);
-        assertEquals(false, hash1.exists(valueOne));
+        assertFalse(hash1.exists(valueOne));
         hash1.addElement(valueOne);
-        assertEquals(true, hash1.exists(valueOne));
+        assertTrue(hash1.exists(valueOne));
         
         originalHashFunction hashCounter2 = new originalHashFunction();
         Hash hash2 = new Hash(hashCounter2);
-        assertEquals(false, hash2.exists(valueTwo));
+        assertFalse(hash2.exists(valueTwo));
         hash2.addElement(valueTwo);
-        assertEquals(true, hash2.exists(valueTwo));
+        assertTrue(hash2.exists(valueTwo));
     }
 
     /**
@@ -54,16 +54,16 @@ public class HashTest {
         MyOwnHashFunction hashCounter1 = new MyOwnHashFunction();
         Hash hash1 = new Hash(hashCounter1);
         hash1.addElement(valueOne);
-        assertEquals(true, hash1.exists(valueOne));
+        assertTrue(hash1.exists(valueOne));
         hash1.deleteElement(valueOne);
-        assertEquals(!true, hash1.exists(valueOne));
+        assertFalse(hash1.exists(valueOne));
         
         originalHashFunction hashCounter2 = new originalHashFunction();
         Hash hash2 = new Hash(hashCounter2);
         hash2.addElement(valueOne);
-        assertEquals(true, hash2.exists(valueOne));
+        assertTrue(hash2.exists(valueOne));
         hash2.deleteElement(valueOne);
-        assertEquals(false, hash2.exists(valueOne));
+        assertFalse(hash2.exists(valueOne));
     }
 
     /**
@@ -73,15 +73,15 @@ public class HashTest {
     public void testExists() {
         MyOwnHashFunction hashCounter1 = new MyOwnHashFunction();
         Hash hash1 = new Hash(hashCounter1);
-        assertEquals(false, hash1.exists(valueOne));
+        assertFalse(hash1.exists(valueOne));
         hash1.addElement(valueOne);
-        assertEquals(true, hash1.exists(valueOne));
+        assertTrue(hash1.exists(valueOne));
         
         originalHashFunction hashCounter2 = new originalHashFunction();
         Hash hash2 = new Hash(hashCounter2);
-        assertEquals(false, hash2.exists(valueOne));
+        assertFalse(hash2.exists(valueOne));
         hash2.addElement(valueOne);
-        assertEquals(true, hash2.exists(valueOne));
+        assertTrue(hash2.exists(valueOne));
     }
     
     private final String valueOne = "test";
