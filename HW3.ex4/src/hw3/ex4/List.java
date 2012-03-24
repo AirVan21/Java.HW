@@ -1,6 +1,5 @@
 package hw3.ex4;
 
-import javax.swing.JOptionPane;
 
 public class List {
 
