@@ -1,7 +1,5 @@
 package hw3.ex4;
 
-import javax.swing.JOptionPane;
-
 public class Hash {
     
     /**
@@ -39,10 +37,15 @@ public class Hash {
      * @param value element value 
      */
     public boolean exists(String value) {
-        int codeValue = hashCode.hashCounter(value, length);
-        return hashTable[codeValue].exists(value);
+        boolean answer = false;
+        for (int i = 0; i < length; i++) {
+            if (hashTable[i].exists(value)) {
+                answer = true;
+            }
+        }
+        return answer;
     }
-    
+
     /**
      * showing all hash elements
      */

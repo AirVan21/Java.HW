@@ -17,5 +17,6 @@ public class MyOwnHashFunction implements HashFunctionInterface {
         }
         return Math.abs(currentHash % hashLength);
     }
+    
     private final int simpleNumber = 7;
 }
