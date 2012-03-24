@@ -7,12 +7,12 @@ public class Hash {
     /**
      * hash table constructor
      */
-    public Hash(HashFunction hashCounter) {
+    public Hash(HashFunctionInterface hashCounter) {
         this.hashTable = new List[length];
         for (int i = 0; i < length; i++) {
             hashTable[i] = new List();
         }
-        this.hashCounter = hashCounter;
+        this.hashCode = hashCounter;
     }
     
     /**
@@ -20,7 +20,7 @@ public class Hash {
      * @param value element value
      */
     public void addElement(String value) {
-        hashTable[hashCounter.originalHashFunction(value, length)].addToEnd(value);
+        hashTable[hashCode.hashCounter(value, length)].addToEnd(value);
     }
     
     /**
@@ -28,7 +28,7 @@ public class Hash {
      * @param value element value 
      */
     public void deleteElement(String value) {
-        int codeValue = hashCounter.originalHashFunction(value, length);
+        int codeValue = hashCode.hashCounter(value, length);
         if (exists(value)) {
             hashTable[codeValue].deleteElement(value);
         } 
@@ -39,7 +39,7 @@ public class Hash {
      * @param value element value 
      */
     public boolean exists(String value) {
-        int codeValue = hashCounter.originalHashFunction(value, length);
+        int codeValue = hashCode.hashCounter(value, length);
         return hashTable[codeValue].exists(value);
     }
     
@@ -58,5 +58,5 @@ public class Hash {
     
     private List hashTable[];
     
-    private HashFunction hashCounter;
+    private HashFunctionInterface hashCode;
 }
