@@ -12,23 +12,27 @@ public class StackList implements Stack{
     
     @Override
     public int top() {
-        return head.getValue();
-        
+        if (amount > 0) {
+            return head.getValue();
+        } else {
+            return error;
+        }
     }
     
     @Override 
     public void push(int value) {
-        StackElement help = new StackElement();
-        help.setNewValue(value);
+        StackElement help = new StackElement(value);
         help.setNewNext(head);
         head = help;
         amount++;
     }
     
-    @Override 
+    @Override
     public void pop() {
-        head = head.nextReturn();
-        amount--;
+        if (amount > 0) {
+            head = head.nextReturn();
+            amount--;
+        }
     }
     
     @Override
@@ -45,5 +49,7 @@ public class StackList implements Stack{
     private StackElement head;
     
     private int amount;
+    
+    private final int error = - 100500;
     
 }

@@ -3,6 +3,15 @@ package hw4.ex2;
 public class StackElement {
 
     /**
+     * Constructor
+     * @param value stack element value 
+     */
+    public StackElement(int value) {
+        this.value = value;
+        this.next = null;
+    }
+    
+    /**
      * Get value
      * 
      * @return element value

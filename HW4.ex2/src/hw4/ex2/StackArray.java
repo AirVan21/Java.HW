@@ -19,17 +19,17 @@ public class StackArray implements Stack{
     @Override
     public void pop() {
         if (amount != 0) {
-            for (int i = 0; i < amount - 1; i++) {
+            for (int i = 0; i < amount + 1; i++) {
                 stack[i] = stack[i + 1];
-            }
+            } 
             amount--;
         }
     }
 
     @Override
     public void push(int value) {
-        for (int i = amount - 1; i > 0; i--) {
-            stack[i + 1] = stack[i];
+        for (int i = amount; i > 0; i--) {
+            stack[i] = stack[i - 1];
         }
         stack[0] = value;
         amount++;
