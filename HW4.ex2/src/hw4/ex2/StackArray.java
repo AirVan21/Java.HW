@@ -1,7 +1,10 @@
 package hw4.ex2;
 
 public class StackArray implements Stack{
-
+    
+    /**
+     * Constructor
+     */
     public StackArray() {
         stack = new int[elementAmount];
         amount = 0;
