@@ -46,7 +46,7 @@ public interface TreeElement {
      */
     public void setRightSon(TreeElement current);
     
-       /**
+    /**
      * Set new left son for Treeelement
      * @param current value
      */

@@ -6,11 +6,21 @@ public class ArithmeticTree {
      * Constructor
      * @param expression - current formula 
      */
-    public ArithmeticTree(String expression) {
-        head = fillTree(expression);
-        counter = 0;    
+    public ArithmeticTree (String expression) throws WrongStructure, IncorrectSymbol {
+        try {
+            head = fillTree(expression);
+        } catch (WrongStructure exception1) {
+            throw new WrongStructure("Wrong input structure!");
+        } catch (IncorrectSymbol exception2) {
+            throw new IncorrectSymbol("Wrong symbole!");
+        }        
+        counter = 0; 
     }
     
+    /**
+     * Get tree head
+     * @return root TreeElement
+     */
     public TreeElement returnHead() {
         return head;
     }
@@ -28,7 +38,7 @@ public class ArithmeticTree {
      * @param expression - current formula
      * @return  - link on head TreeElement
      */
-    private TreeElement fillTree(String expression) {
+    private TreeElement fillTree(String expression) throws WrongStructure, IncorrectSymbol{
         if (isComponent(expression.charAt(counter))) {
             counterUp();
             TreeElement currentOperation = new Operation(expression.charAt(counter));
@@ -46,7 +56,7 @@ public class ArithmeticTree {
                     if (expression.charAt(counter) == ')') {
                         counterUp();
                     } else {
-                      // impossible symbol   
+                      throw new IncorrectSymbol("Wrong symbol!");
                     }                  
                 }
             }
@@ -64,13 +74,13 @@ public class ArithmeticTree {
                     if (expression.charAt(counter) == ')') {
                         counterUp();
                     } else {
-                      // impossible symbol   
+                      throw new IncorrectSymbol("Wrong symbol!");
                     }                  
                 }
             }        
             return currentOperation;
         }
-        throw new NullPointerException("Wrong input structure!");
+        throw new WrongStructure("Wrong input structure!");
     }
     
     /**
@@ -98,7 +108,6 @@ public class ArithmeticTree {
     private void counterUp() {
         counter++;
     }
-    
     
     private static int counter;
     
