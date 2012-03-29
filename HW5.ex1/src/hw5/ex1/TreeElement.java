@@ -1,4 +1,7 @@
+package hw5.ex1;
+
 public interface TreeElement {
+    
     
     /**
      * Check the nature
@@ -35,4 +38,10 @@ public interface TreeElement {
      * @return right TreeElement, which below
      */
     public TreeElement getLeftSon();
+    
+    
+    public void setRightSon(TreeElement current);
+    
+    public void setLeftSon(TreeElement current);
+    
 }

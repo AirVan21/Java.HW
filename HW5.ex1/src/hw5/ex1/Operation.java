@@ -1,4 +1,12 @@
+package hw5.ex1;
+
 public class Operation implements TreeElement{
+    
+    public Operation(char value) {
+        operationValue = value;
+        rightSon = null;
+        leftSon = null;
+    }
 
     @Override
     public boolean isDigit() {
@@ -20,8 +28,22 @@ public class Operation implements TreeElement{
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
-    @Override TreeElement() {
-        
+    @Override
+    public TreeElement getLeftSon() {
+        return this;
+    }
+    
+    @Override
+    public TreeElement getRightSon() {
+        return this;
+    }
+     
+    public void setRightSon(TreeElement current) {
+        this.rightSon = current;
+    }
+
+    public void setLeftSon(TreeElement current) {
+        this.leftSon = current;
     }
     
     private char operationValue;
