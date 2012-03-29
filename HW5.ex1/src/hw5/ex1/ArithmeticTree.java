@@ -11,6 +11,10 @@ public class ArithmeticTree {
         counter = 0;    
     }
     
+    public TreeElement returnHead() {
+        return head;
+    }
+    
     /**
      * Tree creation (add TreeElement in 2 steps)
      * a) If block starts with '(' then make Operation with "sons"
@@ -94,6 +98,7 @@ public class ArithmeticTree {
     private void counterUp() {
         counter++;
     }
+    
     
     private static int counter;
     

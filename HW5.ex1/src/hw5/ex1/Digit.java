@@ -8,17 +8,17 @@ public class Digit implements TreeElement{
 
     @Override
     public boolean isDigit() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     @Override
     public boolean isOperation() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return false;
     }
 
     @Override
     public int getValue() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return value;
     }
 
     @Override

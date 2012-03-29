@@ -40,8 +40,16 @@ public interface TreeElement {
     public TreeElement getLeftSon();
     
     
+    /**
+     * Set new right son for Treeelement
+     * @param current value
+     */
     public void setRightSon(TreeElement current);
     
+       /**
+     * Set new left son for Treeelement
+     * @param current value
+     */
     public void setLeftSon(TreeElement current);
     
 }

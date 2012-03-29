@@ -15,7 +15,7 @@ public class Operation implements TreeElement{
 
     @Override
     public boolean isOperation() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return true;
     }
 
     @Override
@@ -25,23 +25,25 @@ public class Operation implements TreeElement{
 
     @Override
     public char getOperation() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return operationValue;
     }
     
     @Override
     public TreeElement getLeftSon() {
-        return this;
+        return this.leftSon;
     }
     
     @Override
     public TreeElement getRightSon() {
-        return this;
+        return this.rightSon;
     }
-     
+    
+    @Override
     public void setRightSon(TreeElement current) {
         this.rightSon = current;
     }
-
+    
+    @Override
     public void setLeftSon(TreeElement current) {
         this.leftSon = current;
     }
