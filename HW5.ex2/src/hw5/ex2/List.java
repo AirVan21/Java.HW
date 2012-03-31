@@ -1,6 +1,6 @@
 package hw5.ex2;
 
-public class List {
+public class List extends SimpleList {
 
     /**
      * Сonstructor
@@ -16,6 +16,7 @@ public class List {
      *
      * @param value element value
      */
+    @Override
     public void addToEnd(String value) throws AlreadyExist { 
         if (!this.exists(value)) {
             ListElement current = new ListElement(value);
@@ -37,6 +38,7 @@ public class List {
      *
      * @param value element value
      */
+    @Override
     public void addToStart(String value) throws AlreadyExist {
         if (!this.exists(value)) {
             ListElement current = new ListElement(value);
@@ -58,6 +60,7 @@ public class List {
      *
      * @param value element value
      */
+    @Override
     public String getValue(int place) throws NotExist{
         if (place <= count) {
             ListElement current = head;
@@ -75,6 +78,7 @@ public class List {
      *
      * @param value element value
      */
+    @Override
     public void deleteElement(String value) throws NotExist {
         if (this.exists(value)) {
             ListElement previous = head;
@@ -99,59 +103,6 @@ public class List {
         } else {
             throw new NotExist("Element that you want to deleted doesn't exist");
         }
-    }
-
-    /**
-     * List deletion
-     */
-    public void deleteList() {
-        count = 0;
-        head = null;
-        tail = null;
-    }
-
-    /**
-     * List output
-     */
-    public void output() {
-        ListElement current = head;
-        while (current != tail.next()) {
-            System.out.print(current.getValue() + " ");
-            current = current.next();
-        }
-        System.out.println();
-    }
-
-    /**
-     * Get the List length
-     */
-    public int listAmount() {
-        return count;
-    }
-
-    /**
-     * Check for emptiness
-     */
-    public boolean isEmpty() {
-        return count == 0;
-    }
-
-    /**
-     * Check for existing
-     *
-     * @param value element value
-     */
-    public boolean exists(String value) {
-        if (!isEmpty()) {
-            ListElement current = head;
-            while (current != tail.next()) {
-                if (current.getValue().equals(value)) {
-                    return true;
-                }
-                current = current.next();
-            }
-        }
-        return false;
     }
     
     private ListElement head;
