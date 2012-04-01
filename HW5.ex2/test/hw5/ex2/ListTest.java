@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
  *
  * @author AirVan
  */
-public class ListTest extends SimpleListTest {
+public class ListTest {
     
     public ListTest() {
     }
@@ -18,14 +18,6 @@ public class ListTest extends SimpleListTest {
 
     @AfterClass
     public static void tearDownClass() throws Exception {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
     
     /**
@@ -54,7 +46,7 @@ public class ListTest extends SimpleListTest {
     @Test (expected = NotExist.class)
     public void testGetValueForExceptin() throws Exception {
         SimpleList list = new List();
-        assertEquals(valueOne, list.getValue(1));
+        assertEquals(valueOne, list.getValue(2));
     }
     
     /**
@@ -62,7 +54,7 @@ public class ListTest extends SimpleListTest {
      */
     @Test (expected = NotExist.class)
     public void testDeleteElementForException() throws Exception {
-        List list = new List();
+        SimpleList list = new List();
         list.addToEnd(valueOne);
         list.deleteElement(valueOne);
         list.deleteElement(valueOne);

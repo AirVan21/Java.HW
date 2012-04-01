@@ -120,7 +120,7 @@ public class SimpleListTest {
      * Test of exists method, of class List.
      */
     @Test
-    public void testExists() throws Exception {
+    public void testExists() throws Exception{
         SimpleList list = new SimpleList();
         list.addToStart(valueOne);
         assertTrue(list.exists(valueOne));
