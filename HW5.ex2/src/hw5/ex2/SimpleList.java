@@ -66,7 +66,7 @@ public class SimpleList {
      *
      * @param value element value
      */
-    public void deleteElement(String value) throws NotExist {
+    public void deleteElement(String value) throws NotExist{
         ListElement previous = head;
         ListElement current = head.next();
         if (previous.getValue().equals(value)) {
@@ -141,9 +141,9 @@ public class SimpleList {
         return false;
     }
     
-    private ListElement head;
+    protected ListElement head;
     
-    private ListElement tail;
+    protected ListElement tail;
     
-    private int count;
+    protected int count;
 }

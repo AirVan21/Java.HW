@@ -17,8 +17,8 @@ public class List extends SimpleList {
      * @param value element value
      */
     @Override
-    public void addToEnd(String value) throws AlreadyExist { 
-        if (!this.exists(value)) {
+    public void addToEnd(String value) throws AlreadyExist {
+        if (!exists(value)) {
             ListElement current = new ListElement(value);
             if (count == 0) {
                 head = current;
@@ -40,7 +40,7 @@ public class List extends SimpleList {
      */
     @Override
     public void addToStart(String value) throws AlreadyExist {
-        if (!this.exists(value)) {
+        if (!exists(value)) {
             ListElement current = new ListElement(value);
             if (count == 0) {
                 head = current;
@@ -61,7 +61,7 @@ public class List extends SimpleList {
      * @param value element value
      */
     @Override
-    public String getValue(int place) throws NotExist{
+    public String getValue(int place) throws NotExist {
         if (place <= count) {
             ListElement current = head;
             for (int i = 1; i < place; i++) {
@@ -80,7 +80,7 @@ public class List extends SimpleList {
      */
     @Override
     public void deleteElement(String value) throws NotExist {
-        if (this.exists(value)) {
+        if (exists(value)) {
             ListElement previous = head;
             ListElement current = head.next();
             if (previous.getValue().equals(value)) {
@@ -104,11 +104,5 @@ public class List extends SimpleList {
             throw new NotExist("Element that you want to deleted doesn't exist");
         }
     }
-    
-    private ListElement head;
-    
-    private ListElement tail;
-    
-    private int count;
-    
+  
 }
