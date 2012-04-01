@@ -19,7 +19,7 @@ public class List extends SimpleList {
     @Override
     public void addToEnd(String value) throws AlreadyExist {
         if (!exists(value)) {
-            addToEnd(value);
+            super.addToEnd(value);
         } else {
             throw new AlreadyExist("Alredy exist in List");
 
@@ -34,7 +34,7 @@ public class List extends SimpleList {
     @Override
     public void addToStart(String value) throws AlreadyExist {
         if (!exists(value)) {
-            addToStart(value);
+            super.addToStart(value);
         } else {
             throw new AlreadyExist("Alredy exist in List");
         }
@@ -48,7 +48,7 @@ public class List extends SimpleList {
     @Override
     public String getValue(int place) throws NotExist {
         if (place <= count) {
-            return getValue(place);
+            return super.getValue(place);
         } else {
             throw new NotExist("Element with such id doesn't exist");
         }
@@ -62,7 +62,7 @@ public class List extends SimpleList {
     @Override
     public void deleteElement(String value) throws NotExist {
         if (exists(value)) {
-            deleteElement(value);
+            super.deleteElement(value);
         } else {
             throw new NotExist("Element that you want to deleted doesn't exist");
         }
