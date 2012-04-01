@@ -51,15 +51,12 @@ public class SimpleList {
      */
     public String getValue(int place) throws NotExist {
         ListElement current = head;
-        if (place <= count) {
-            for (int i = 1; i < place; i++) {
-                current = current.next();
-            }
-            return current.getValue();
-        } else {
-            return "error";
+        for (int i = 1; i < place; i++) {
+            current = current.next();
         }
+        return current.getValue();
     }
+
 
     /**
      * delete selected element
