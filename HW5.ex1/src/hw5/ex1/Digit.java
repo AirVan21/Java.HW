@@ -22,26 +22,28 @@ public class Digit implements TreeElement{
     }
 
     @Override
-    public char getOperation() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public char getOperation() throws ImpossibleAction {
+        throw new ImpossibleAction("Digit couldn't have operation");
     }
 
     @Override
-    public TreeElement getRightSon() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public TreeElement getRightSon() throws ImpossibleAction {
+        throw new ImpossibleAction("Digit couldn't have son");
     }
 
     @Override
-    public TreeElement getLeftSon() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public TreeElement getLeftSon() throws ImpossibleAction {
+        throw new ImpossibleAction("Digit couldn't have son");
     }
 
     @Override
-    public void setRightSon(TreeElement current) {
+    public void setRightSon(TreeElement current) throws ImpossibleAction {
+        throw new ImpossibleAction("Digit couldn't have son");
     }
 
     @Override
-    public void setLeftSon(TreeElement current) {
+    public void setLeftSon(TreeElement current) throws ImpossibleAction {
+        throw new ImpossibleAction("Digit couldn't have son");
     }
     
     private int value;

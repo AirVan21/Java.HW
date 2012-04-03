@@ -10,6 +10,8 @@ public class HW5Ex1 {
             System.out.println(exception1.getMessage());
         } catch (IncorrectSymbol exception2) {
             System.out.println(exception2.getMessage());
+        } catch (ImpossibleAction exception3) {
+            System.out.println(exception3.getMessage());
         }
     }
 }

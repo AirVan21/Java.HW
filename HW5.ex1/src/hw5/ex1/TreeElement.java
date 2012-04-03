@@ -19,37 +19,37 @@ public interface TreeElement {
      * Get digit value
      * @return digit's value
      */
-    public int getValue();
+    public int getValue() throws ImpossibleAction;
     
     /**
      * Get operation essense
      * @return (+ | - | * | / |)
      */
-    public char getOperation();
+    public char getOperation() throws ImpossibleAction;
     
     /**
      * Get right TreeElement
      * @return right TreeElement, which below
      */
-    public TreeElement getRightSon();
+    public TreeElement getRightSon() throws ImpossibleAction;
     
     /**
      * Get right TreeElement
      * @return right TreeElement, which below
      */
-    public TreeElement getLeftSon();
+    public TreeElement getLeftSon() throws ImpossibleAction;
     
     
     /**
      * Set new right son for Treeelement
      * @param current value
      */
-    public void setRightSon(TreeElement current);
+    public void setRightSon(TreeElement current) throws ImpossibleAction;
     
     /**
      * Set new left son for Treeelement
      * @param current value
      */
-    public void setLeftSon(TreeElement current);
+    public void setLeftSon(TreeElement current) throws ImpossibleAction;
     
 }

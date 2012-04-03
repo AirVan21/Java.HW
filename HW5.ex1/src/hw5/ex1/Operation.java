@@ -19,8 +19,8 @@ public class Operation implements TreeElement{
     }
 
     @Override
-    public int getValue() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public int getValue() throws ImpossibleAction {
+        throw new ImpossibleAction("Operation couldn't have value");
     }
 
     @Override

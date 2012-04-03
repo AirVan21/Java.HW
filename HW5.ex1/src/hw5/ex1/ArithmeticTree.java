@@ -6,14 +6,16 @@ public class ArithmeticTree {
      * Constructor
      * @param expression - current formula 
      */
-    public ArithmeticTree (String expression) throws WrongStructure, IncorrectSymbol {
+    public ArithmeticTree (String expression) throws WrongStructure, IncorrectSymbol, ImpossibleAction {
         try {
             head = fillTree(expression);
         } catch (WrongStructure exception1) {
             throw new WrongStructure("Wrong input structure!");
         } catch (IncorrectSymbol exception2) {
             throw new IncorrectSymbol("Wrong symbole!");
-        }        
+        } catch (ImpossibleAction exception3) {
+            throw new ImpossibleAction(exception3.toString());
+        }
         counter = 0; 
     }
     
@@ -38,7 +40,7 @@ public class ArithmeticTree {
      * @param expression - current formula
      * @return  - link on head TreeElement
      */
-    private TreeElement fillTree(String expression) throws WrongStructure, IncorrectSymbol{
+    private TreeElement fillTree(String expression) throws WrongStructure, IncorrectSymbol, ImpossibleAction{
         if (isComponent(expression.charAt(counter))) {
             counterUp();
             TreeElement currentOperation = new Operation(expression.charAt(counter));
