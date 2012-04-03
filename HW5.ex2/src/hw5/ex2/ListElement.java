@@ -2,6 +2,10 @@ package hw5.ex2;
 
 public class ListElement {
     
+    /**
+     * Constructor
+     * @param value ListElement value
+     */
     public ListElement(String value) {
         this.next = null;
         this.value = value;

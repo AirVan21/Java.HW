@@ -22,7 +22,6 @@ public class List extends SimpleList {
             super.addToEnd(value);
         } else {
             throw new AlreadyExist("Alredy exist in List");
-
         }
     }
 
