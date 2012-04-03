@@ -40,7 +40,7 @@ public class ArithmeticTree {
      * @param expression - current formula
      * @return  - link on head TreeElement
      */
-    private TreeElement fillTree(String expression) throws WrongStructure, IncorrectSymbol, ImpossibleAction{
+    public TreeElement fillTree(String expression) throws WrongStructure, IncorrectSymbol, ImpossibleAction{
         if (isComponent(expression.charAt(counter))) {
             counterUp();
             TreeElement currentOperation = new Operation(expression.charAt(counter));

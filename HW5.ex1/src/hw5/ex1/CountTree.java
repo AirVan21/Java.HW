@@ -49,7 +49,7 @@ public class CountTree {
      * @param value2 operand
      * @return solution
      */
-    private int computation(char operation, int value1, int value2) throws IncorrectSymbol {
+    public int computation(char operation, int value1, int value2) throws IncorrectSymbol {
         switch (operation) {
             case '+' : return value1 + value2;
             case '-' : return value1 - value2;
