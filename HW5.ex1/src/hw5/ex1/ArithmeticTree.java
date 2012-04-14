@@ -6,17 +6,17 @@ public class ArithmeticTree {
      * Constructor
      * @param expression - current formula 
      */
-    public ArithmeticTree (String expression) throws WrongStructure, IncorrectSymbol, ImpossibleAction {
+    public ArithmeticTree(String expression) throws WrongStructure, IncorrectSymbol, ImpossibleAction {
         try {
             head = fillTree(expression);
         } catch (WrongStructure exception1) {
-            throw new WrongStructure("Wrong input structure!");
+            throw exception1;
         } catch (IncorrectSymbol exception2) {
-            throw new IncorrectSymbol("Wrong symbole!");
+            throw exception2;
         } catch (ImpossibleAction exception3) {
-            throw new ImpossibleAction(exception3.toString());
+            throw exception3;
         }
-        counter = 0; 
+        counter = 0;
     }
     
     /**
