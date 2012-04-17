@@ -29,6 +29,14 @@ public class SetElement<ValueType> {
         return this.next;
     }
     
+    /**
+     * Connect current element with other one
+     * @param connected 
+     */
+    public void connectNext(SetElement connected) {
+        this.next = connected;
+    }
+    
     private ValueType value;
     
     private SetElement next;
