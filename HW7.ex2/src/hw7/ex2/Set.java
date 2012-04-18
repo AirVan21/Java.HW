@@ -98,8 +98,7 @@ public class Set {
             while (current != set1.tail.getNext()) {
                 unionSet.addElement(current.getValue());
                 current = current.getNext();
-            }
-            
+            }       
         }
 
         current = set2.head;
