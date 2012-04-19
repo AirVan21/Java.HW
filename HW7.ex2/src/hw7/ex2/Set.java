@@ -3,7 +3,7 @@ package hw7.ex2;
 /**
  * Set class declaration
  */
-public class Set {
+public class Set<ValueType> {
     
     /**
      * Constructor
@@ -18,7 +18,7 @@ public class Set {
      * Add new element in a Set
      * @param value 
      */
-    public void addElement(Object value) {
+    public void addElement(ValueType value) {
         if (amount == 0) {
             SetElement current = new SetElement(value);
             head = current;
@@ -46,7 +46,7 @@ public class Set {
      * @param value 
      * @return 
      */
-    public boolean exist(Object value) {
+    public boolean exist(ValueType value) {
         if (!this.isEmpty()) {
             SetElement help = head;
             while (help != tail.getNext()) {
@@ -66,7 +66,7 @@ public class Set {
      * @param value
      * @throws WrongActionException 
      */
-    public void deleteElement(Object value) throws WrongActionException {
+    public void deleteElement(ValueType value) throws WrongActionException {
         if (exist(value)) {
             SetElement previous = head;
             SetElement current = head.getNext();
@@ -91,8 +91,8 @@ public class Set {
      * @param set2 second set
      * @return 
      */
-    public Set union(Set set1, Set set2) {
-        Set unionSet = new Set();       
+    public Set<ValueType> union(Set<ValueType> set1, Set<ValueType> set2) {
+        Set<ValueType> unionSet = new Set();       
         SetElement current = set1.head;
         if (!set1.isEmpty()) {
             while (current != set1.tail.getNext()) {
@@ -121,8 +121,8 @@ public class Set {
      * @param set2 second set
      * @return 
      */
-    public Set intersection(Set set1, Set set2) {
-        Set crossSet = new Set();
+    public Set<ValueType> intersection(Set<ValueType> set1, Set<ValueType> set2) {
+        Set<ValueType> crossSet = new Set();
         SetElement current = set1.head;
         if (!set1.isEmpty()) {
             while (current != set1.tail.getNext()) {
