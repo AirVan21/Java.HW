@@ -9,7 +9,7 @@ public class SetElement<ValueType> {
      * Constructor
      * @param value of SetElement 
      */
-    public SetElement(ValueType value) {
+    public SetElement (ValueType value) {
         this.value = value;
         this.next = null;
     }

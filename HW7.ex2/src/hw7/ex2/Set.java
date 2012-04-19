@@ -20,13 +20,13 @@ public class Set<ValueType> {
      */
     public void addElement(ValueType value) {
         if (amount == 0) {
-            SetElement<ValueType> current = new SetElement(value);
+            SetElement<ValueType> current = new SetElement<>(value);
             head = current;
             tail = current;
             amount++;
         } else {
             if (!exist(value)) {
-                SetElement<ValueType> current = new SetElement(value);
+                SetElement<ValueType> current = new SetElement<>(value);
                 tail.connectNext(current);
                 tail = current;
                 amount++;
@@ -92,7 +92,7 @@ public class Set<ValueType> {
      * @return 
      */
     public Set<ValueType> union(Set<ValueType> set1, Set<ValueType> set2) {
-        Set<ValueType> unionSet = new Set();       
+        Set<ValueType> unionSet = new Set<>();       
         SetElement<ValueType> current = set1.head;
         if (!set1.isEmpty()) {
             while (current != set1.tail.getNext()) {
@@ -121,7 +121,7 @@ public class Set<ValueType> {
      * @return 
      */
     public Set<ValueType> intersection(Set<ValueType> set1, Set<ValueType> set2) {
-        Set<ValueType> crossSet = new Set();
+        Set<ValueType> crossSet = new Set<>();
         SetElement<ValueType> current = set1.head;
         if (!set1.isEmpty()) {
             while (current != set1.tail.getNext()) {
