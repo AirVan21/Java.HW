@@ -20,13 +20,13 @@ public class Set<ValueType> {
      */
     public void addElement(ValueType value) {
         if (amount == 0) {
-            SetElement current = new SetElement(value);
+            SetElement<ValueType> current = new SetElement(value);
             head = current;
             tail = current;
             amount++;
         } else {
             if (!exist(value)) {
-                SetElement current = new SetElement(value);
+                SetElement<ValueType> current = new SetElement(value);
                 tail.connectNext(current);
                 tail = current;
                 amount++;
@@ -48,7 +48,7 @@ public class Set<ValueType> {
      */
     public boolean exist(ValueType value) {
         if (!this.isEmpty()) {
-            SetElement help = head;
+            SetElement<ValueType> help = head;
             while (help != tail.getNext()) {
                 if (help.getValue() == value) {
                     return true;
@@ -68,8 +68,8 @@ public class Set<ValueType> {
      */
     public void deleteElement(ValueType value) throws WrongActionException {
         if (exist(value)) {
-            SetElement previous = head;
-            SetElement current = head.getNext();
+            SetElement<ValueType> previous = head;
+            SetElement<ValueType> current = head.getNext();
             if (previous.getValue() == value) {
                 head = current;
             } else {
@@ -93,7 +93,7 @@ public class Set<ValueType> {
      */
     public Set<ValueType> union(Set<ValueType> set1, Set<ValueType> set2) {
         Set<ValueType> unionSet = new Set();       
-        SetElement current = set1.head;
+        SetElement<ValueType> current = set1.head;
         if (!set1.isEmpty()) {
             while (current != set1.tail.getNext()) {
                 unionSet.addElement(current.getValue());
@@ -122,7 +122,7 @@ public class Set<ValueType> {
      */
     public Set<ValueType> intersection(Set<ValueType> set1, Set<ValueType> set2) {
         Set<ValueType> crossSet = new Set();
-        SetElement current = set1.head;
+        SetElement<ValueType> current = set1.head;
         if (!set1.isEmpty()) {
             while (current != set1.tail.getNext()) {
                 if (set2.exist(current.getValue())) {
@@ -134,9 +134,9 @@ public class Set<ValueType> {
         return crossSet;
     }
     
-    private SetElement head;
+    private SetElement<ValueType> head;
     
-    private SetElement tail;
+    private SetElement<ValueType> tail;
     
     private int amount;
 }

@@ -25,7 +25,7 @@ public class SetElement<ValueType> {
     /**
      * Get SetElement which connected with this one
      */
-    public SetElement getNext() {
+    public SetElement<ValueType> getNext() {
         return this.next;
     }
     
@@ -33,12 +33,12 @@ public class SetElement<ValueType> {
      * Connect current element with other one
      * @param connected 
      */
-    public void connectNext(SetElement connected) {
+    public void connectNext(SetElement<ValueType> connected) {
         this.next = connected;
     }
     
     private ValueType value;
     
-    private SetElement next;
+    private SetElement<ValueType> next;
     
 }
