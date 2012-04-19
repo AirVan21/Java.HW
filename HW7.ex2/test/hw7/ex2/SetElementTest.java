@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
  *
  * @author AirVan
  */
-public class SetElementTest {
+public class SetElementTest<ValueType> {
     
     public SetElementTest() {
     }
@@ -33,11 +33,10 @@ public class SetElementTest {
      */
     @Test
     public void testGetValue() {
-        SetElement test1 = new SetElement('a');
-        SetElement test2 = new SetElement(22.44);
-        assertEquals('a', test1.getValue());
-        assertEquals(22.44, test2.getValue());
-
+        SetElement<Character> test1 = new SetElement<>('a');
+        SetElement<Character> test2 = new SetElement<>('b');
+        assertEquals((Character)'a', test1.getValue());
+        assertEquals((Character)'b', test2.getValue());
     }
 
     /**
@@ -45,8 +44,8 @@ public class SetElementTest {
      */
     @Test
     public void testGetNext() {
-        SetElement test1 = new SetElement('a');
-        SetElement test2 = new SetElement(22.44);
+        SetElement<Character> test1 = new SetElement<>('a');
+        SetElement<Character> test2 = new SetElement<>('b');
         test1.connectNext(test2);
         assertEquals(test2, test1.getNext());
     }
@@ -56,8 +55,8 @@ public class SetElementTest {
      */
     @Test
     public void testConnectNext() {
-        SetElement test1 = new SetElement('a');
-        SetElement test2 = new SetElement(22.44);
+        SetElement<Character> test1 = new SetElement<>('a');
+        SetElement<Character> test2 = new SetElement<>('b');
         test2.connectNext(test1);
         test1.connectNext(test2);
         assertEquals(test1, test2.getNext());
