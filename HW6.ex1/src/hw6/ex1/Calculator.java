@@ -2,6 +2,7 @@ package hw6.ex1;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  * Creates new form Calculator
@@ -50,7 +51,7 @@ public class Calculator extends javax.swing.JFrame {
      *
      * @param symbol
      */
-    public void operationManager(char symbol) {
+    public void operationManager(char symbol) throws DivisionByZeroException {
         if (!"".equals(text.getText())) {
             switch (symbol) {
                 case '+':
@@ -63,9 +64,14 @@ public class Calculator extends javax.swing.JFrame {
                     memory = memory * Double.parseDouble(text.getText());
                     break;
                 case '/':
-                     memory = memory / Double.parseDouble(text.getText());
+                    if (!"0".equals(text.getText())) {
+                        memory = memory / Double.parseDouble(text.getText());
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Division by zero!");
+                        throw new DivisionByZeroException("Division by zero!");
+                    }                
                     break;
-                case '%':
+                case startAction:
                     memory = Double.parseDouble(text.getText());
             }
         }
@@ -92,23 +98,32 @@ public class Calculator extends javax.swing.JFrame {
         private String value;
     }
     
+    /**
+     * Listener class for operation - buttons
+     */
     private class OperationListener implements ActionListener {
         
+        /**
+         * Constructor
+         * @param value of oparation 
+         */
         public OperationListener(char value) {
             this.value = value;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (previousAction == '%' && value == '-' && memory == 0) {
+            if (previousAction == startAction && value == '-' && memory == 0) {
                 text.setText("-");
             } else {
-                operationManager(previousAction);
+                try {
+                    operationManager(previousAction);
+                } catch (DivisionByZeroException exception) {
+                }
                 text.setText("");
                 previousAction = value;
             }
         }
-
         private char value;
     }
 
@@ -403,7 +418,7 @@ public class Calculator extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         text.setText("");
         memory = 0;
-        previousAction = '%';
+        previousAction = startAction;
     }//GEN-LAST:event_deleteActionPerformed
 
     /**
@@ -417,19 +432,28 @@ public class Calculator extends javax.swing.JFrame {
             if (value >= 0) {
                 printer(value);
             } else {
-                text.setText("0");
+                JOptionPane.showMessageDialog(rootPane, "Argument under Root should be > 0");
+                text.setText("");
             }
         }
     }//GEN-LAST:event_sqrtActionPerformed
 
     /**
      * Action after '=' - button was pressed
-     * @param evt 
+     * @param evt
      */
     private void equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equalsActionPerformed
-        operationManager(previousAction);
-        previousAction = '%';
-        printer(memory);
+        boolean mistake = false;
+        try {
+            operationManager(previousAction);
+        } catch (DivisionByZeroException exception) {
+            previousAction = startAction;
+            text.setText("");
+            mistake = true;
+        }
+        if (!mistake) {
+            printer(memory);
+        }
     }//GEN-LAST:event_equalsActionPerformed
 
     /**
@@ -474,7 +498,10 @@ public class Calculator extends javax.swing.JFrame {
         });
     }
     
+    private final char startAction = '%';
+    
     private char previousAction;
+    
     private double memory;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton comma;
