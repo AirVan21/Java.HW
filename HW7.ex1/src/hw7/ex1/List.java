@@ -52,6 +52,7 @@ public class List<ValueType> {
         }
         
         private ListElement<ValueType> current;
+        
     }
 
     /**
@@ -180,40 +181,16 @@ public class List<ValueType> {
     
     private int count;
 
+    /**
+     * Class for a element of List
+     * @param <ValueType> element's value type
+     */
     private class ListElement<ValueType> {
 
         public ListElement(ValueType value) {
             this.next = null;
             this.value = value;
         }
-
-        
-        /**
-         * Get element value
-         *
-        public ValueType getValue() {
-            return this.value;
-        }
-
-        /**
-         * Get element link
-         *
-         * @param current selected element
-         * @return
-         *
-        public ListElement<ValueType> next() {
-            return this.next;
-        }
-
-        /**
-         * Connect two elements
-         *
-         * @param connect element which should be connected
-         * @param value connection place
-         *
-        public void connectNext(ListElement<ValueType> value) {
-            next = value;
-        }*/
         
         private ValueType value;
         
