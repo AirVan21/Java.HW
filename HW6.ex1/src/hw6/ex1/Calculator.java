@@ -16,7 +16,7 @@ public class Calculator extends javax.swing.JFrame {
         initComponents();
         setTitle("Calculator");
         memory = 0;
-        previousAction = '%';
+        previousAction = startAction;
         zero.addActionListener(new NumberListener("0"));
         one.addActionListener(new NumberListener("1"));
         two.addActionListener(new NumberListener("2"));
@@ -158,6 +158,8 @@ public class Calculator extends javax.swing.JFrame {
         equals = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setLocationByPlatform(true);
         setMaximumSize(new java.awt.Dimension(304, 305));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -452,6 +454,7 @@ public class Calculator extends javax.swing.JFrame {
             mistake = true;
         }
         if (!mistake) {
+            previousAction = startAction;
             printer(memory);
         }
     }//GEN-LAST:event_equalsActionPerformed
