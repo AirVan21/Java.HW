@@ -92,7 +92,12 @@ public class Calculator extends javax.swing.JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            text.setText(text.getText() + value);
+            if (!clearScreen) {
+                text.setText(text.getText() + value);}
+            else {
+                text.setText(value);
+                clearScreen = false;
+            }
         }
         
         private String value;
@@ -456,6 +461,7 @@ public class Calculator extends javax.swing.JFrame {
         if (!mistake) {
             previousAction = startAction;
             printer(memory);
+            clearScreen = true;
         }
     }//GEN-LAST:event_equalsActionPerformed
 
@@ -500,6 +506,8 @@ public class Calculator extends javax.swing.JFrame {
             }
         });
     }
+    
+    private boolean clearScreen;
     
     private final char startAction = '%';
     
