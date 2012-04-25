@@ -3,8 +3,6 @@ package hw6.ex2;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,15 +18,9 @@ public class Watch extends JFrame {
      */
     public Watch() {
         label = new Label();
-        setTitle("Watch");
-        setLocation(500,250);
-        setSize(350, 180);
-        setLayout(new BorderLayout());
+        setDesing();
         addLabel();
-        getData();
-        Timer timer = new Timer();
-        TimerTask task = new refreshTask();
-        timer.schedule(task, 0, 1000);
+        startTimer();
     }
     
     /**
@@ -40,7 +32,25 @@ public class Watch extends JFrame {
         public void run() {
             getData();
         }
+    }
     
+    /**
+     * Sets frame's desing
+     */
+    private void setDesing() {
+        setTitle("Watch");
+        setLocation(500,250);
+        setSize(350, 180);
+        setLayout(new BorderLayout());
+    }
+    
+    /**
+     * Starting clock refreshing
+     */
+    private void startTimer() {
+        Timer timer = new Timer();
+        TimerTask task = new refreshTask();
+        timer.schedule(task, 0, 1000);
     }
     
     /**
