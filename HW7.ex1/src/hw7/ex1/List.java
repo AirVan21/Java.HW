@@ -9,27 +9,26 @@ public class List<ValueType> implements Iterable<ValueType>{
      */
     public List() {
         ListElement<ValueType> guard = new ListElement<>(null);
-        stepIterator = new iterator();
         head = guard;
         tail = guard;
         count = 0;
     }
-
+    
     /**
-     * Connectin' iterator to the List 
+     * Connectin' iterator to the List
      * @return iterator
      */
     @Override
     public Iterator<ValueType> iterator() {
-        return stepIterator; 
+        return new ListIterator();
     }
 
-    private class iterator implements Iterator<ValueType> {
+    private class ListIterator implements Iterator<ValueType> {
 
         /**
          * Constructor
          */
-        public iterator() {
+        public ListIterator() {
             this.current = head;
         }
 
@@ -58,7 +57,9 @@ public class List<ValueType> implements Iterable<ValueType>{
          */
         @Override
         public ValueType next() {
-            return this.current.next.value;
+            ValueType help = this.current.next.value;
+            this.remove();
+            return help;
         }
         
         private ListElement<ValueType> current;
@@ -96,13 +97,12 @@ public class List<ValueType> implements Iterable<ValueType>{
      */
     public boolean exist(ValueType value) {
         if (!isEmpty()) {
-            Iterator<ValueType> step = new iterator();
-            while (step.hasNext()) {
-                if (step.next() == value) {
+            for (ValueType current : this) {
+                if (current == value) {
                     return true;
                 }
-                step.remove();
             }
+            return false;
         }
         return false;
     }
@@ -113,7 +113,7 @@ public class List<ValueType> implements Iterable<ValueType>{
      * @param value element value
      */
     public ValueType getValue(int place) throws NotExistException {
-        Iterator<ValueType> step = new iterator();
+        Iterator<ValueType> step = new ListIterator();
         if (place <= count) {
             for (int i = 1; i < place; i++) {
                 step.remove();
@@ -182,8 +182,6 @@ public class List<ValueType> implements Iterable<ValueType>{
     public boolean isEmpty() {
         return count == 0;
     }
-    
-    private iterator stepIterator;
     
     private ListElement<ValueType> head;
     
