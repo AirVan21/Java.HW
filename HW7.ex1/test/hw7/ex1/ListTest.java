@@ -34,11 +34,12 @@ public class ListTest {
     @Test
     public void testAddToEnd() throws Exception {
         List<String> list = new List<>();
-        assertTrue(list.isEmpty());
         list.addToEnd("test1");
-        assertTrue(list.exist("test1"));
         list.addToEnd("test2");
-        assertEquals("test1", list.getValue(1));
+        list.addToEnd("test3");
+        for (String current : list) {
+            assertTrue(list.exist(current));
+        }
     }
 
     /**
@@ -47,11 +48,12 @@ public class ListTest {
     @Test
     public void testAddToStart() throws Exception{
         List<String> list = new List<>();
-        assertTrue(list.isEmpty());
         list.addToStart("test1");
-        assertTrue(list.exist("test1"));
         list.addToStart("test2");
-        assertEquals("test2", list.getValue(1));
+        list.addToStart("test3");
+        for (String current : list) {
+            assertTrue(list.exist(current));
+        }
     }
 
     /**
@@ -60,9 +62,12 @@ public class ListTest {
     @Test
     public void testExist() {
         List<String> list = new List<>();
-        assertFalse(list.exist("test1"));
         list.addToEnd("test1");
-        assertTrue(list.exist("test1"));
+        list.addToEnd("test2");
+        list.addToEnd("test3");
+        for (String current : list) {
+            assertTrue(list.exist(current));
+        }
     }
 
     /**
@@ -94,11 +99,14 @@ public class ListTest {
         List<String> list = new List<>();
         list.addToEnd("test1");
         list.addToEnd("test2");
+        for (String current : list) {
+            assertTrue(list.exist(current));
+        }
         list.deleteElement("test2");
-        assertFalse(list.exist("test2"));
-        assertTrue(list.exist("test1"));
         list.deleteElement("test1");
-        assertTrue(list.isEmpty());
+        for (String current : list) {
+            assertFalse(list.exist(current));
+        }
     }
     
     /**
