@@ -130,6 +130,25 @@ public class ListTest {
         list.addToStart("test2");
         assertEquals(2, list.listAmount());
     }
+    
+    @Test
+    public void testOutput() throws Exception {
+        List<String> list = new List<>();
+        list.addToEnd("test1");
+        list.addToEnd("test2");
+        list.addToEnd("test3");
+        int elementCount = 0;
+        for (String current : list) {
+            if (list.exist(current)) {
+                elementCount++;
+            }
+        }
+        assertEquals(list.listAmount(), elementCount);
+        for (String current : list) {
+            list.deleteElement(current);
+        }
+        assertTrue(list.isEmpty());
+    }
 
     /**
      * Test of isEmpty method, of class List.
