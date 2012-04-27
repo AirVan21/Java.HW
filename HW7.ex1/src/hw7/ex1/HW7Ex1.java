@@ -12,5 +12,7 @@ public class HW7Ex1 {
             System.out.println(exception.toString());
         } 
         list.output();
+        System.out.println(list.exist((Integer)5));
+        System.out.println(list.exist((Integer)22));
     }
 }

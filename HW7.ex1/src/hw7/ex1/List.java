@@ -2,16 +2,26 @@ package hw7.ex1;
 
 import java.util.Iterator;
 
-public class List<ValueType> {
+public class List<ValueType> implements Iterable<ValueType>{
 
     /**
      * Constructor
      */
     public List() {
         ListElement<ValueType> guard = new ListElement<>(null);
+        stepIterator = new iterator();
         head = guard;
         tail = guard;
         count = 0;
+    }
+
+    /**
+     * Connectin' iterator to the List 
+     * @return iterator
+     */
+    @Override
+    public Iterator<ValueType> iterator() {
+        return stepIterator; 
     }
 
     private class iterator implements Iterator<ValueType> {
@@ -142,11 +152,9 @@ public class List<ValueType> {
      * List output
      */
     public void output() {
-        Iterator<ValueType> step = new iterator();
         if (!isEmpty()) {
-            while (step.hasNext()) {
-                System.out.print(step.next() + " ");
-                step.remove();
+            for (ValueType current : this) {
+                System.out.print(current + " ");
             }
             System.out.println();
         }
@@ -175,6 +183,8 @@ public class List<ValueType> {
         return count == 0;
     }
     
+    private iterator stepIterator;
+    
     private ListElement<ValueType> head;
     
     private ListElement<ValueType> tail;
@@ -185,15 +195,15 @@ public class List<ValueType> {
      * Class for a element of List
      * @param <ValueType> element's value type
      */
-    private class ListElement<ValueType> {
+    public class ListElement<ValueType> {
 
         public ListElement(ValueType value) {
             this.next = null;
             this.value = value;
         }
         
-        private ValueType value;
+        public ValueType value;
         
-        private ListElement<ValueType> next;
+        public ListElement<ValueType> next;
     }
 }
