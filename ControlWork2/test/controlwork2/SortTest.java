@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlwork2;
 
 import org.junit.*;
@@ -37,12 +33,6 @@ public class SortTest {
      */
     @Test
     public void testGetSortedList() {
-        System.out.println("getSortedList");
-        Sort instance = null;
-        List expResult = null;
-        List result = instance.getSortedList();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        // есть в мээйне проверка , я не успел
     }
 }
