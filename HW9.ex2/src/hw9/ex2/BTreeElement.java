@@ -18,6 +18,27 @@ public class BTreeElement<ValueType> {
         this.value = value;
     }
     
+    /**
+     * Check for empty
+     */
+    public boolean isEmpty() {
+        return this.key == 0;
+    }
+    
+    /**
+     * Set value
+     */
+    public void setValue(ValueType value) {
+        this.value = value;
+    }
+    
+    /**
+     * Set key
+     */
+    public void setKey(int key) {
+        this.key = key;
+    }
+    
     /*
      * Valuable information
      */

@@ -1,5 +1,7 @@
 package hw9.ex2;
-    
+
+import java.util.ArrayList;
+
 /**
  * Class for B - Tree nodes
  */
@@ -11,10 +13,9 @@ public class BTreeNode<ValueType> {
      * @param keyAmount amount of BTreeElements in the node
      */
     public BTreeNode(int keyAmount) {
+        currentMax = 0;
         emptyNodeAmount = keyAmount;
-        for (int i = 0; i < keyAmount; i++) {
-            node[i] = new BTreeElement<>(0, null);
-        }
+        this.keyAmount = keyAmount;
     }
     
     /**
@@ -23,14 +24,26 @@ public class BTreeNode<ValueType> {
      * @param value 
      */
     public void addToNode(int key, ValueType value) {
-        
-        
+        for (int i = 0; i < this.keyAmount; i++) {
+        }
     }
+    
+    /**
+     * Check for correct new element addition
+     */
+    public boolean mayAdd() {
+        return emptyNodeAmount != 0;
+    }
+    
+    /**
+     * BTree node's sons
+     */
+    private BTreeNode<ValueType> sons;
     
     /**
      * BTreeElements mas in node
      */
-    private BTreeElement<ValueType> node[];
+    private ArrayList<ValueType> nodeMas;
     
     /**
      * Node filling rate
@@ -40,5 +53,10 @@ public class BTreeNode<ValueType> {
     /**
      * Max key - id
      */
-    private int currenMax;
+    private int currentMax;
+    
+    /**
+     * Key amount
+     */
+    private int keyAmount;
 }

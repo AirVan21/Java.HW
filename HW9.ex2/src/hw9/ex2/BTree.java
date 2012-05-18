@@ -12,12 +12,24 @@ public class BTree<ValueType> {
      */
     public BTree(int keyAmount) {
         treeRoot = new BTreeNode<>(keyAmount);
+        currentNode = treeRoot;
     }
     
-    public void add(int key, ValueType value) {
-        BTreeElement<ValueType> currentTreeElement = new BTreeElement<>(key,value);
+    /**
+     * Addition
+     * @param key
+     * @param value 
+     */
+    public void addToTree(int key, ValueType value) {
+        if(currentNode.mayAdd()) {
+            currentNode.addToNode(key, value);
+        } else {
+            
+        }
     }
 
     
     private BTreeNode<ValueType> treeRoot; 
+    
+    private BTreeNode<ValueType> currentNode;
 }
