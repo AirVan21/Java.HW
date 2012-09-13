@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package hw3.ex3;
 
 import org.junit.*;
@@ -12,7 +8,7 @@ import static org.junit.Assert.*;
  * @author AirVan
  */
 public class ListElementTest {
-
+    
     public ListElementTest() {
     }
 
@@ -23,11 +19,11 @@ public class ListElementTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
@@ -37,8 +33,8 @@ public class ListElementTest {
      */
     @Test
     public void testGetValue() {
-        ListElement test = new ListElement(valueOne);
-        assertEquals(valueOne, test.getValue());
+        ListElement current = new ListElement("a");
+        assertEquals("a", current.getValue());
     }
 
     /**
@@ -46,10 +42,10 @@ public class ListElementTest {
      */
     @Test
     public void testNext() {
-        ListElement test = new ListElement(valueOne);
-        ListElement connected = new ListElement(valueTwo);
-        test.connectNext(connected);
-        assertEquals(connected, test.next());
+        ListElement current1 = new ListElement("a");
+        ListElement current2 = new ListElement("b");
+        current1.connectNext(current2);
+        assertEquals(current2, current1.next());
     }
 
     /**
@@ -57,14 +53,9 @@ public class ListElementTest {
      */
     @Test
     public void testConnectNext() {
-        ListElement test = new ListElement(valueOne);
-        ListElement connected = new ListElement(valueTwo);
-        test.connectNext(connected);
-        assertEquals(connected, test.next());
+        ListElement current1 = new ListElement("a");
+        ListElement current2 = new ListElement("b");
+        current1.connectNext(current2);
+        assertEquals(current2, current1.next());
     }
-
-    private final String valueOne = "test";
-    
-    private final String valueTwo = "problem";
-    
 }

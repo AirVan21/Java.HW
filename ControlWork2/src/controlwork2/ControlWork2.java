@@ -14,6 +14,7 @@ public class ControlWork2 {
         list.addToEnd("b", 1);
         list.addToEnd("c", 2);
         list.addToEnd("d", 8);
+        list.addToEnd("e", 1);
         Comparator<String> compare = new Comparator<>();
         Sort<String> bubble = new Sort<>(list, compare);
         List<String> list2 = bubble.getSortedList();
