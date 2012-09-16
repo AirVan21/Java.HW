@@ -1,9 +1,11 @@
 package hw10.ex1;
 
+import java.util.Iterator;
+
 /**
  * Binary Tree
  */
-public class Tree<TreeValue> {
+public class Tree<TreeValue> /**implements Iterable<TreeValue>*/{
     /**
      * Constructor
      */
@@ -11,30 +13,101 @@ public class Tree<TreeValue> {
         this.root = null;
     }
     
-    /**
-     * addition to Tree
-     * @param value of TreeElement
-     * @param id of TreeElement
-     */
-    public void fillTreeElement(TreeElement<TreeValue> current, TreeValue value, int id) {
-       // set something
+    public void addElement(TreeValue value, int id) {
+        if (root != null) {
+            constructTree(root, value, id);
+        } else {
+            root = new TreeElement<>(value, id);
+        }
     }
     
     /**
-     * finds place for new element
+     * Make tree with new value
+     * @param place where start
+     * @param value to add
+     * @param id of element we wanna add
+     * @return 
      */
-    public TreeElement<TreeValue> findPlace(int id, TreeElement<TreeValue> current) {
-        if (current == null) {
-            return current;
-        } else {
-            if (id > current.getId()) {
-                this.findPlace(id, current.getRightSon());
+    public void constructTree(TreeElement<TreeValue> place, TreeValue value, int id) {
+        // choose right or left way
+        if (place.getId() > id) {
+            // add if empty
+            if (place.hasLeftSon()) {
+                constructTree(place.getLeftSon(), value, id);
+            } else {
+                TreeElement<TreeValue> help = new TreeElement<>(value, id);
+                place.setLeftSon(help);
             }
-            if (id < current.getId()) {
-                this.findPlace(id, current.getLeftSon());
-            }     
+            
+        } else {
+            if (place.getId() < id) {
+                // add if empty
+                if (place.hasRightSon()) {
+                    constructTree(place.getRightSon(), value, id);
+                } else {
+                    TreeElement<TreeValue> help = new TreeElement<>(value, id);
+                    place.setRightSon(help);
+                }
+            } else {
+                //exception about 'already exist'
+            }
         }
-        return root;
+    }
+    
+    /**
+     * Iterator for the Tree
+     * @return 
+     *
+    @Override
+    public Iterator<TreeValue> iterator() {
+        return new TreeIterator();
+    }
+    
+    private class TreeIterator implements Iterator<TreeValue> {
+        
+        /**
+         * Constructor
+         *
+        public TreeIterator() {
+            this.way = root;
+        }
+
+        /**
+         * Check opportunity to make new step 
+         * @return 
+         *
+        @Override
+        public boolean hasNext() {
+            return ((this.way.getLeftSon() != null) || (this.way.getRightSon() != null));
+        }
+
+        /**
+         * get's next element value
+         * @return 
+         *
+        @Override
+        public TreeValue next() {
+            if (this.way.hasLeftSon()) {
+                //way = this
+            }
+            return this.way.getValue();
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
+        
+        private TreeElement<TreeValue> way;
+        
+    }*/
+    
+    /**
+     * gets root
+     * @return 
+     */
+    public TreeElement<TreeValue> getRoot() {
+        return this.root;
     }
     
     /**

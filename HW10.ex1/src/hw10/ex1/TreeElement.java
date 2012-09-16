@@ -17,6 +17,24 @@ public class TreeElement<TreeValue> {
     
     /**
      * get TreeElement value
+     *
+     * @return value
+     */
+    public void setValue(TreeValue value) {
+        this.value = value;
+    }
+
+    /**
+     * get TreeElement id
+     *
+     * @return id
+     */
+    public int getId() {
+        return this.id;
+    }
+    
+    /**
+     * get TreeElement value
      * @return value
      */
     public TreeValue getValue() {
@@ -24,11 +42,11 @@ public class TreeElement<TreeValue> {
     }
     
     /**
-     * get TreeElement id 
-     * @return id
+     * sets id
+     * @param id 
      */
-    public int getId() {
-        return this.id;
+    public void setId(int id) {
+        this.id = id;
     }
     
     /**
@@ -43,7 +61,7 @@ public class TreeElement<TreeValue> {
      * set Right son for a current 
      * @param connected 
      */
-    public void seRightSon(TreeElement<TreeValue> connected) {
+    public void setRightSon(TreeElement<TreeValue> connected) {
         this.rightSon = connected;
     }
     
@@ -63,6 +81,21 @@ public class TreeElement<TreeValue> {
         return this.rightSon;
     }
     
+    /**
+     * check's Right son
+     * @return 
+     */
+    public boolean hasRightSon() {
+        return this.rightSon != null;
+    }
+    
+    /**
+     * check's Left son
+     * @return 
+     */
+    public boolean hasLeftSon() {
+        return this.leftSon != null;
+    }    
     
     /**
      * main information
