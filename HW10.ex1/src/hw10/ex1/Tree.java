@@ -3,9 +3,9 @@ package hw10.ex1;
 import java.util.Iterator;
 
 /**
- * Binary Tree
+ * Binary Search Tree
  */
-public class Tree<TreeValue> /**implements Iterable<TreeValue>*/{
+public class Tree<TreeValue> implements Iterable<TreeValue>{
     /**
      * Constructor
      */
@@ -13,6 +13,21 @@ public class Tree<TreeValue> /**implements Iterable<TreeValue>*/{
         this.root = null;
     }
     
+    /**
+     * Iterator for the Tree
+     * @return 
+     */
+    @Override
+    public Iterator<TreeValue> iterator() {
+        Iterator<TreeValue> treeIterator = new TreeIterator<>(root);
+        return treeIterator;
+    }
+    
+    /**
+     * Add new element to the Tree
+     * @param value of an element
+     * @param id  of an element
+     */
     public void addElement(TreeValue value, int id) {
         if (root != null) {
             constructTree(root, value, id);
@@ -55,52 +70,14 @@ public class Tree<TreeValue> /**implements Iterable<TreeValue>*/{
     }
     
     /**
-     * Iterator for the Tree
-     * @return 
-     *
-    @Override
-    public Iterator<TreeValue> iterator() {
-        return new TreeIterator();
+     * Output
+     */
+    public void output() {
+        Iterator<TreeValue> step = new TreeIterator<>(root);
+        while (step.hasNext()) {
+            System.out.println(" " + step.next());
+        }
     }
-    
-    private class TreeIterator implements Iterator<TreeValue> {
-        
-        /**
-         * Constructor
-         *
-        public TreeIterator() {
-            this.way = root;
-        }
-
-        /**
-         * Check opportunity to make new step 
-         * @return 
-         *
-        @Override
-        public boolean hasNext() {
-            return ((this.way.getLeftSon() != null) || (this.way.getRightSon() != null));
-        }
-
-        /**
-         * get's next element value
-         * @return 
-         *
-        @Override
-        public TreeValue next() {
-            if (this.way.hasLeftSon()) {
-                //way = this
-            }
-            return this.way.getValue();
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-        
-        private TreeElement<TreeValue> way;
-        
-    }*/
     
     /**
      * gets root
@@ -114,4 +91,5 @@ public class Tree<TreeValue> /**implements Iterable<TreeValue>*/{
      * tree root
      */
     private TreeElement<TreeValue> root;
+
 }
