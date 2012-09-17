@@ -10,6 +10,7 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
     public TreeIterator(TreeElement<TreeValue> place) {
         this.place = place;
         this.way = new Stack<>();
+        this.banStack = new Stack<>();
         this.way.push(place.getValue(), place.getId());
     }
 
@@ -30,18 +31,24 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      */
     @Override
     public TreeValue next() {
-        if (this.place.hasLeftSon()) {
+        if (place.hasLeftSon() && !checkBan(place.getLeftSon().getValue())) {
             place = place.getLeftSon();
             way.push(place.getValue(), place.getId());
-        } else {
-            if (this.place.hasRightSon()) {
-                place = place.getRightSon();
-                way.push(place.getValue(), place.getId());
-            } else {
-                this.remove();
-            }
+            return this.next();
         }
-        return this.place.getValue();
+        if (place.hasRightSon() && !checkBan(place.getRightSon().getValue())) {
+            place = place.getRightSon();
+            way.push(place.getValue(), place.getId());
+            return this.next();
+        }
+        if (!place.hasLeftSon() && !place.hasRightSon()) {
+            // medium result
+            TreeElement<TreeValue> help = new TreeElement<>(way.top().getValue(), 0);
+            this.remove();
+            return help.getValue();
+        }
+        this.remove();
+        return place.getValue();
     }
 
     /**
@@ -49,13 +56,37 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      */
     @Override
     public void remove() {
+        this.banStack.push(way.top().getValue(), 0);
         way.pop();
+        place = way.top();
+    }
+    
+    /**
+     * Check for viewed elements
+     * @param check
+     * @return 
+     */
+    private boolean checkBan(TreeValue check) {
+        TreeElement<TreeValue> current = banStack.top();
+        while (current != null) {
+            if (current.getValue() == check) {
+                return true;
+            } else {
+                current = current.getNext();
+            }
+        }
+       return false; 
     }
     
     /**
      * Way on tree
      */
     private Stack<TreeValue> way;
+    
+    /**
+     * Ban Stack
+     */
+    private Stack<TreeValue> banStack;
    
     /**
      * Start for search

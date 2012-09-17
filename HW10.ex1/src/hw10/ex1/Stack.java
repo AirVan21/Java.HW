@@ -11,7 +11,7 @@ public class Stack<TreeValue> {
     }
 
     public void push(TreeValue value, int id) {
-        StackElement<TreeValue> lastAdded = new StackElement<>(value, id);
+        TreeElement<TreeValue> lastAdded = new TreeElement<>(value, id);
         lastAdded.setNext(head);
         head = lastAdded;
         count++;
@@ -33,14 +33,14 @@ public class Stack<TreeValue> {
      * Gets value
      * @return 
      */
-    public TreeValue top() {
+    public TreeElement<TreeValue> top() {
         if (head != null) {
-            return head.getValue();
+            return head;
         } 
         return null;
     }
     
-    private StackElement<TreeValue> head;
+    private TreeElement<TreeValue> head;
     
     /**
      * Amount of stack elements

@@ -95,7 +95,23 @@ public class TreeElement<TreeValue> {
      */
     public boolean hasLeftSon() {
         return this.leftSon != null;
-    }    
+    }
+    
+    /**
+     * Set next
+     * @param connected 
+     */
+    public void setNext(TreeElement<TreeValue> connected) {
+        this.next = connected;
+    }
+    
+    /**
+     * Get next
+     * @return 
+     */
+    public TreeElement<TreeValue> getNext() {
+        return this.next;
+    }
     
     /**
      * main information
@@ -116,5 +132,9 @@ public class TreeElement<TreeValue> {
      * right son
      */
     private TreeElement<TreeValue> rightSon;
-       
+    
+    /**
+     * next
+     */
+    private TreeElement<TreeValue> next;
 }
