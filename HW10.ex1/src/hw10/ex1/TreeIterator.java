@@ -11,7 +11,7 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
         this.place = place;
         this.way = new Stack<>();
         this.banStack = new Stack<>();
-        this.way.push(place.getValue(), place.getId());
+        this.way.push(place.getValue(), place.getId(), place.getLeftSon(), place.getRightSon());
     }
 
     /**
@@ -31,22 +31,33 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      */
     @Override
     public TreeValue next() {
-        if (place.hasLeftSon() && !checkBan(place.getLeftSon().getValue())) {
+        if (place.hasLeftSon()) {
             place = place.getLeftSon();
-            way.push(place.getValue(), place.getId());
+            way.push(place.getValue(), place.getId(), place.getLeftSon(), place.getRightSon());
             return this.next();
         }
-        if (place.hasRightSon() && !checkBan(place.getRightSon().getValue())) {
+        if (place.hasRightSon()) {
             place = place.getRightSon();
-            way.push(place.getValue(), place.getId());
+            way.push(place.getValue(), place.getId(), place.getLeftSon(), place.getRightSon());
             return this.next();
         }
         if (!place.hasLeftSon() && !place.hasRightSon()) {
             // medium result
             TreeElement<TreeValue> help = new TreeElement<>(way.top().getValue(), 0);
             this.remove();
+            // check viewed links
+            if (this.hasNext()) {
+                if (place.getLeftSon() != null && place.getLeftSon().getValue() == help.getValue()) {
+                    place.setLeftSon(null);
+                } else {
+                    if (place.getRightSon() != null) {
+                        place.setRightSon(null);
+                    }
+                }
+            }
             return help.getValue();
         }
+        
         this.remove();
         return place.getValue();
     }
@@ -56,7 +67,7 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      */
     @Override
     public void remove() {
-        this.banStack.push(way.top().getValue(), 0);
+        //this.banStack.push(way.top().getValue(), null, null);
         way.pop();
         place = way.top();
     }
@@ -66,7 +77,7 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      * @param check
      * @return 
      */
-    private boolean checkBan(TreeValue check) {
+    public boolean checkBan(TreeValue check) {
         TreeElement<TreeValue> current = banStack.top();
         while (current != null) {
             if (current.getValue() == check) {

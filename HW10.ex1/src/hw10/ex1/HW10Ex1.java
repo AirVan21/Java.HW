@@ -9,6 +9,8 @@ public class HW10Ex1 {
         tree1.addElement("c", 11);
         tree1.addElement("d", 7);
         tree1.addElement("e", 9);
+        tree1.addElement("k", 14);
+        tree1.addElement("l", 13);
         tree1.output();
     }
 }
