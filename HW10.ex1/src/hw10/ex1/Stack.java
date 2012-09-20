@@ -10,6 +10,13 @@ public class Stack<TreeValue> {
         count = 0;
     }
 
+    /**
+     * Push TreeElement
+     * @param value
+     * @param id
+     * @param leftSon
+     * @param rightSon 
+     */
     public void push(TreeValue value, int id, TreeElement<TreeValue> leftSon, TreeElement<TreeValue> rightSon) {
         TreeElement<TreeValue> lastAdded = new TreeElement<>(value, id);
         lastAdded.setLeftSon(leftSon);
