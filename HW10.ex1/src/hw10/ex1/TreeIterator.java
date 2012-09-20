@@ -64,7 +64,6 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
             return help.getValue();
         }
         
-        //this.remove();
         return place.getValue();
     }
 
@@ -73,7 +72,6 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      */
     @Override
     public void remove() {
-        //this.banStack.push(way.top().getValue(), null, null);
         way.pop();
         place = way.top();
     }
