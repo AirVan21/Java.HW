@@ -7,15 +7,14 @@ public class Stack<TreeValue> {
      */
     public Stack() {
         head = null;
-        count = 0;
     }
 
     /**
      * Push TreeElement
-     * @param value
-     * @param id
-     * @param leftSon
-     * @param rightSon 
+     * @param value value of element
+     * @param id id of element
+     * @param leftSon left son of element
+     * @param rightSon right son of element
      */
     public void push(TreeValue value, int id, TreeElement<TreeValue> leftSon, TreeElement<TreeValue> rightSon) {
         TreeElement<TreeValue> lastAdded = new TreeElement<>(value, id);
@@ -23,25 +22,21 @@ public class Stack<TreeValue> {
         lastAdded.setRightSon(rightSon);
         lastAdded.setNext(head);
         head = lastAdded;
-        count++;
     }
 
     /**
      * Pop head element
      */
     public void pop() {
-        if (this.count != 0) {
+        if (this.head != null) {
             head = head.getNext();
-            count--;
-        } else {
-            // throw exception;
         }
     }
 
     /**
      * Gets value
      *
-     * @return
+     * @return TreeElement
      */
     public TreeElement<TreeValue> top() {
         if (head != null) {
@@ -50,10 +45,8 @@ public class Stack<TreeValue> {
         return null;
     }
     
-    private TreeElement<TreeValue> head;
-    
     /**
-     * Amount of stack elements
+     * Head stack element
      */
-    private int count;
+    private TreeElement<TreeValue> head;
 }

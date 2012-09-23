@@ -25,8 +25,8 @@ public class Tree<TreeValue> implements Iterable<TreeValue>{
     
     /**
      * Add new element to the Tree
-     * @param value of an element
-     * @param id  of an element
+     * @param value value of an element
+     * @param id  id of an element
      */
     public void addElement(TreeValue value, int id) throws AlreadyExistException{
         if (root != null) {
@@ -43,7 +43,7 @@ public class Tree<TreeValue> implements Iterable<TreeValue>{
      * @param id of element we wanna add
      * @return 
      */
-    public void constructTree(TreeElement<TreeValue> place, TreeValue value, int id) throws AlreadyExistException{
+    private void constructTree(TreeElement<TreeValue> place, TreeValue value, int id) throws AlreadyExistException{
         // choose right or left way
         if (place.getId() > id) {
             // add if empty
@@ -71,7 +71,7 @@ public class Tree<TreeValue> implements Iterable<TreeValue>{
     
     /**
      * Check element in tree or not
-     * @param searchValue
+     * @param searchValue value, which we are searching
      * @return 
      */
     public boolean elementExist(TreeValue searchValue) {
@@ -92,14 +92,6 @@ public class Tree<TreeValue> implements Iterable<TreeValue>{
         while (step.hasNext()) {
             System.out.println(" " + step.next());
         }
-    }
-    
-    /**
-     * gets root
-     * @return 
-     */
-    public TreeElement<TreeValue> getRoot() {
-        return this.root;
     }
     
     /**
