@@ -95,6 +95,15 @@ public class Tree<TreeValue> implements Iterable<TreeValue>{
     }
     
     /**
+     * Gets root
+     * @return root Treeelement
+     */
+    public TreeElement<TreeValue> getRoot() {
+        return this.root;
+    }
+    
+    
+    /**
      * tree root
      */
     private TreeElement<TreeValue> root;
