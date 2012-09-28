@@ -13,6 +13,22 @@ public class PC {
     }
     
     /**
+     * Answers about virus existence
+     *
+     * @return
+     */
+    public boolean isInfected() {
+        return this.system.isInfected();
+    }
+    
+    /**
+     * Commit virus attack
+     */
+    public void attack() {
+        this.system.virusAttack();;
+    }
+    
+    /**
      * Name of OS
      */
     private OS system;

@@ -8,8 +8,8 @@ public class Windows extends OS{
     /**
      * Constructor
      */
-    public Windows() {
-        this.infectionStatus = false;
+    public Windows(boolean status) {
+        this.infectionStatus = status;
         this.infectionAbility = 40;
     }
     

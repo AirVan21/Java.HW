@@ -8,8 +8,8 @@ public class Chrome extends OS{
     /**
      * Constructor
      */
-    public Chrome() {
-        this.infectionStatus = false;
+    public Chrome(boolean status) {
+        this.infectionStatus = status;
         this.infectionAbility = 25;
     }
     

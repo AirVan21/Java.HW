@@ -8,8 +8,8 @@ public class Linux extends OS{
     /**
      * Constructor
      */
-    public Linux() {
-        this.infectionStatus = false;
+    public Linux(boolean status) {
+        this.infectionStatus = status;
         this.infectionAbility = 15;
     }
     
