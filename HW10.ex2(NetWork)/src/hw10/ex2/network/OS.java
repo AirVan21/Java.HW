@@ -3,43 +3,25 @@ package hw10.ex2.network;
 /**
  * Describes methods in operation system
  */
-public class OS {
+public interface OS {
 
     /**
      * Answers about virus existence
      *
      * @return
      */
-    public boolean isInfected() {
-        return this.infectionStatus;
-    }
+    public boolean isInfected();
 
     /**
      * Gives virus infection opportunity
      *
      * @return
      */
-    public int infectionAbility() {
-        return this.infectionAbility;
-    }
+    public int infectionAbility();
 
     /**
      * Tryin' to change status of OS
      */
-    public void virusAttack() {
-        Randomizer random = new Randomizer(this.infectionAbility);
-        if (random.getResult()) {
-            infectionStatus = true;
-        }
-    }
+    public void virusAttack();
     
-    /**
-     * Is infected of not
-     */
-    private boolean infectionStatus;
-    
-    /**
-     * Gives information about virus possibility
-     */
-    private int infectionAbility;
 }

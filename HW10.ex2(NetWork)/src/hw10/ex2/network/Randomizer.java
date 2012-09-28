@@ -12,8 +12,8 @@ public class Randomizer {
      * @param possibility 
      */
     public Randomizer(int possibility) {
-        answer = false;
-        chance = possibility;
+        this.answer = false;
+        this.chance = possibility;
     }
     
     /**

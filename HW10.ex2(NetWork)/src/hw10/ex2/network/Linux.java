@@ -3,7 +3,7 @@ package hw10.ex2.network;
 /**
  * Linux OS description
  */
-public class Linux extends OS{   
+public class Linux implements OS{   
     
     /**
      * Constructor
@@ -11,6 +11,24 @@ public class Linux extends OS{
     public Linux(boolean status) {
         this.infectionStatus = status;
         this.infectionAbility = 15;
+    }
+    
+    @Override
+    public boolean isInfected() {
+        return this.infectionStatus;
+    }
+    
+    @Override
+    public void virusAttack() {
+        Randomizer random = new Randomizer(this.infectionAbility);
+        if (random.getResult()) {
+            infectionStatus = true;
+        }
+    }
+    
+    @Override
+    public int infectionAbility() {
+        return this.infectionAbility;
     }
     
     /**
@@ -21,5 +39,6 @@ public class Linux extends OS{
     /**
      * Gives information about virus possibility
      */
-    private int infectionAbility;    
+    private int infectionAbility;
+
 }
