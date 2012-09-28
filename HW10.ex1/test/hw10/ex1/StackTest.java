@@ -56,7 +56,7 @@ public class StackTest {
         stack.pop();
         assertEquals("a", stack.top().getValue());
     }
-
+    
     /**
      * Test of top method, of class Stack.
      */

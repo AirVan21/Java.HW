@@ -12,9 +12,11 @@ public class TreeIterator<TreeValue> implements Iterator<TreeValue> {
      * Constructor
      */
     public TreeIterator(TreeElement<TreeValue> place) {
-        this.place = place;
-        this.way = new Stack<>();
-        this.way.push(place.getValue(), place.getId(), place.getLeftSon(), place.getRightSon());
+        if (place != null) {
+            this.place = place;
+            this.way = new Stack<>();
+            this.way.push(place.getValue(), place.getId(), place.getLeftSon(), place.getRightSon());
+        }
     }
 
     /**
