@@ -71,7 +71,7 @@ public class NetWork {
     /**
      * Describes PC connections
      */
-    private int[][] connection = {
+    private final int[][] connection = {
         {0, 1, 1 , 0, 1},
         {1, 0, 0 , 1, 0},
         {1, 0, 0 , 1, 0},
