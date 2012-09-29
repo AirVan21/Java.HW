@@ -28,7 +28,23 @@ public class TreeIteratorTest {
     @After
     public void tearDown() {
     }
-
+    
+    /**
+     * Test of hasNext method, of class TreeIterator.
+     */
+    @Test
+    public void testForEach() throws AlreadyExistException {
+        Tree<String> tree1 = new Tree<>();
+        tree1.addElement("a", 2);
+        tree1.addElement("b", 1);
+        tree1.addElement("c", 4);
+        Iterator<String> treeIterator = new TreeIterator<>(tree1.getRoot());
+        for (String current : tree1) {
+            assertTrue(tree1.elementExist(current));
+            System.out.println(current);
+        }
+    }
+    
     /**
      * Test of hasNext method, of class TreeIterator.
      */
