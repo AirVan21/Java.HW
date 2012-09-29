@@ -41,7 +41,6 @@ public class TreeIteratorTest {
         Iterator<String> treeIterator = new TreeIterator<>(tree1.getRoot());
         for (String current : tree1) {
             assertTrue(tree1.elementExist(current));
-            System.out.println(current);
         }
     }
     
