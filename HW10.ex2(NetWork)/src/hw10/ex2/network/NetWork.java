@@ -64,6 +64,14 @@ public class NetWork {
     }
     
     /**
+     * Method for computer connection test
+     * @return 
+     */
+    protected PC[] getComputers() {
+        return this.computers;
+    }
+    
+    /**
      * Current PCs
      */
     private PC[] computers;

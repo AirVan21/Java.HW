@@ -10,7 +10,8 @@ public class Windows implements OS{
      */
     public Windows(boolean status) {
         this.infectionStatus = status;
-        this.infectionAbility = 25;
+        // such primary values just to test system
+        this.infectionAbility = 100;
     }
     
     @Override

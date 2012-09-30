@@ -10,7 +10,8 @@ public class Linux implements OS{
      */
     public Linux(boolean status) {
         this.infectionStatus = status;
-        this.infectionAbility = 15;
+        // such primary values just to test system
+        this.infectionAbility = 100;
     }
     
     @Override

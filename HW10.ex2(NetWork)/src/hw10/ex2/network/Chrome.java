@@ -10,7 +10,8 @@ public class Chrome implements OS{
      */
     public Chrome(boolean status) {
         this.infectionStatus = status;
-        this.infectionAbility = 10;
+        // such primary values just to test system
+        this.infectionAbility = 100;
     }
     
     @Override
