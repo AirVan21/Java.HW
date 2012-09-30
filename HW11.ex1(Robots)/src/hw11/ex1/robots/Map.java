@@ -16,7 +16,7 @@ public class Map {
     
     /**
      * Add robots on a map
-     * @param place 
+     * @param place place where we put robot
      */
     public void setRobot(int place) {
         robotPlace.add(true, place);
@@ -24,15 +24,25 @@ public class Map {
     }
     
     /**
+     * On step of Robo-game system
+     */
+    public void progress() {
+        ListElement current = this.robotPlace.getHead();
+        while (current != null) {
+                      
+        }
+    }
+    
+    /**
      * Adds nodes, which connected with current, into list
-     * @param nodeId
-     * @return 
+     * @param nodeId id of Node for which we write connection 
+     * @return connection list
      */
     private List setCurrentConnection(int nodeId) {
         List list = new List();
         for (int i = 0; i < this.connection.length; i++) {
             int upI = i + 1;
-            if (robotPlace.exist(upI) && this.connection[nodeId - 1][i] == 1) {
+            if (robotPlace.existConnection(upI) && this.connection[nodeId - 1][i] == 1) {
                 list.add(true, upI);
             }
             if (this.connection[nodeId - 1][i] == 1) {

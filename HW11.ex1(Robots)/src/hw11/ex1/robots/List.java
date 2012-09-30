@@ -20,7 +20,7 @@ public class List {
      */
     public void add(boolean value, int id) {
         ListElement current = new ListElement(value, id);
-        tail.next = current;
+        tail.setNext(current);
         tail = current;
         count++;
     }
@@ -36,44 +36,37 @@ public class List {
      * Test inclusion
      * @return 
      */
-    public boolean exist(int id) {
+    public boolean existConnection(int id) {
         ListElement current = head;
-        while (current.next != null) {
-            if (current.id == id) {
+        while (current.getNext() != null) {
+            if (current.getId() == id) {
                 return true;
             }
-            current = current.next;
+            current = current.getNext();
         }
         return false;
     }
     
     /**
-     * Class for a element of List
+     * Takes List's head
+     * @return 
      */
-    public class ListElement {
-
-        public ListElement(boolean information, int num) {
-            this.next = null;
-            this.place = information;
-            this.id = num;
-        }
-        
-        /**
-         * Save information about sitting robot 
-         */
-        protected boolean place;
-        
-        /**
-         * Node id
-         */
-        protected int id;
-        
-        protected ListElement next;
+    public ListElement getHead() {
+        return this.head.getNext();
     }
     
+    /**
+     * Head of List
+     */
     private ListElement head;
     
+    /**
+     * Tail of List
+     */
     private ListElement tail;
     
+    /**
+     * Amount of elements
+     */
     private int count;
 }
