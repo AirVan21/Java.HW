@@ -43,14 +43,17 @@ public class ListElement {
     public boolean robotHere() {
         return this.place;
     }
+    
     /**
      * Save information about sitting robot
      */
     private boolean place;
+    
     /**
      * Node id
      */
     private int id;
+    
     /**
      * Element, which is standing after current
      */

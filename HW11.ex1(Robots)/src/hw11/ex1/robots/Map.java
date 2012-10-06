@@ -12,6 +12,9 @@ public class Map {
         this.scene = new List[this.connection.length];
         this.robotPlace = new List();
         this.setGlobalConnection();
+        RobotDecision robo = new RobotDecision(this.scene, 1);
+        robo.findNextPlace();
+        
     }
     
     /**
@@ -24,12 +27,45 @@ public class Map {
     }
     
     /**
+     * Checks is node empty
+     * @param checkId num of cheking node
+     */
+    public boolean isEmpty(int checkId) {
+        ListElement currentRobot = this.robotPlace.getHead();
+        while (currentRobot != null) {
+            if (currentRobot.getId() == checkId) {
+                return false;
+            }
+            currentRobot = currentRobot.getNext();
+        }
+        return true;
+    }
+    
+    /**
      * On step of Robo-game system
      */
     public void progress() {
-        ListElement current = this.robotPlace.getHead();
-        while (current != null) {
-                      
+        ListElement currentRobot = this.robotPlace.getHead();
+        int amount = this.robotPlace.listAmount();
+        for (int i = 1; i <= amount; i++) {
+            int startPlace = currentRobot.getId();
+            RobotDecision event = new RobotDecision(this.scene, currentRobot.getId());
+            int nextPlace = event.findNextPlace();
+            if (currentRobot.getId() != nextPlace) {
+                if (this.isEmpty(nextPlace)) {
+                    this.robotPlace.delete(currentRobot.getId());
+                    this.robotPlace.add(true, nextPlace);
+                    System.out.println("Robot[" + i + "] trnsfered from " + startPlace + " to " + nextPlace);
+                } else {
+                    this.robotPlace.delete(currentRobot.getId());
+                    this.robotPlace.delete(nextPlace);
+                    // заплатка, что делать, когда удалилм всех или откуда продожать
+                    System.out.println("Robot die hard meeting at - " + nextPlace );
+                }
+            } else {
+                System.out.println("Robot[" + i + "] still stay in - " + startPlace);
+            }
+            currentRobot = currentRobot.getNext();
         }
     }
     
@@ -44,9 +80,10 @@ public class Map {
             int upI = i + 1;
             if (robotPlace.existConnection(upI) && this.connection[nodeId - 1][i] == 1) {
                 list.add(true, upI);
-            }
-            if (this.connection[nodeId - 1][i] == 1) {
-                list.add(false, upI);
+            } else {
+                if (this.connection[nodeId - 1][i] == 1) {
+                    list.add(false, upI);
+                }
             }
         }
         return list;

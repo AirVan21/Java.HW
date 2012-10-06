@@ -24,7 +24,37 @@ public class List {
         tail = current;
         count++;
     }
-
+    
+    /**
+     * Deleting ListElement with this id
+     * @param id id of node, which should be deleted
+     */
+    public void delete(int id) {
+        ListElement current = this.getHead();
+        ListElement previous = this.head;
+        while (current != null) {
+            if (current.getId() == id) {
+                previous.setNext(current.getNext());
+            }
+            previous = current;
+            current = current.getNext();
+        }
+    }
+    
+    /**
+     * Checks exist element with this id ot not
+     * @param searchId searchin id
+     */
+    public boolean exist(int searchId) {
+        ListElement current = this.getHead();
+        while (current != null) {
+            if (current.getId() == searchId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * Get the List length
      */
@@ -38,7 +68,7 @@ public class List {
      */
     public boolean existConnection(int id) {
         ListElement current = head;
-        while (current.getNext() != null) {
+        while (current != null) {
             if (current.getId() == id) {
                 return true;
             }

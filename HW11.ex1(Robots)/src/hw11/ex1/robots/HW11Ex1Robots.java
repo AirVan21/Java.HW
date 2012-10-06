@@ -9,5 +9,9 @@ public class HW11Ex1Robots {
         Map map = new Map();
         map.setRobot(1);
         map.setRobot(3);
+        map.progress();
+        map.progress();
+        map.progress();
+        map.progress();
     }
 }
