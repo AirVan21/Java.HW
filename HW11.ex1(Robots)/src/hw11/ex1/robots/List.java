@@ -20,8 +20,8 @@ public class List {
      */
     public void add(boolean value, int id) {
         ListElement current = new ListElement(value, id);
-        tail.setNext(current);
-        tail = current;
+        this.tail.setNext(current);
+        this.tail = current;
         count++;
     }
     
@@ -29,15 +29,28 @@ public class List {
      * Deleting ListElement with this id
      * @param id id of node, which should be deleted
      */
-    public void delete(int id) {
+    public void delete(int id) throws NotExistException {
         ListElement current = this.getHead();
         ListElement previous = this.head;
+        // delete element
         while (current != null) {
             if (current.getId() == id) {
-                previous.setNext(current.getNext());
+                current = current.getNext();
+                previous.setNext(current);
+                count--;
+                break;
             }
             previous = current;
             current = current.getNext();
+        }
+        current = this.getHead();
+        if (current != null) {
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            this.tail = current;
+        } else {
+            throw new NotExistException("All robots are dead");
         }
     }
     

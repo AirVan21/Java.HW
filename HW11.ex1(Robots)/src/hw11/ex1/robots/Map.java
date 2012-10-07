@@ -44,9 +44,13 @@ public class Map {
     /**
      * On step of Robo-game system
      */
-    public void progress() {
-        ListElement currentRobot = this.robotPlace.getHead();
-        int amount = this.robotPlace.listAmount();
+    public void progress() throws NotExistException{
+        List changingRoboList = this.robotPlace;
+        ListElement currentRobot = changingRoboList.getHead();
+        int amount = changingRoboList.listAmount();
+        if (amount == 0) {
+            return;
+        }
         for (int i = 1; i <= amount; i++) {
             int startPlace = currentRobot.getId();
             RobotDecision event = new RobotDecision(this.scene, currentRobot.getId());
@@ -55,18 +59,32 @@ public class Map {
                 if (this.isEmpty(nextPlace)) {
                     this.robotPlace.delete(currentRobot.getId());
                     this.robotPlace.add(true, nextPlace);
-                    System.out.println("Robot[" + i + "] trnsfered from " + startPlace + " to " + nextPlace);
+                    System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
                 } else {
-                    this.robotPlace.delete(currentRobot.getId());
-                    this.robotPlace.delete(nextPlace);
-                    // заплатка, что делать, когда удалилм всех или откуда продожать
-                    System.out.println("Robot die hard meeting at - " + nextPlace );
+                    try {
+                        this.robotPlace.delete(currentRobot.getId());
+                        this.robotPlace.delete(nextPlace);
+                    } catch (NotExistException exception) {
+                        System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
+                        System.out.println("All robots are dead");
+                        break;
+                    } finally {
+                        System.out.println("Robot die hard meeting at - " + nextPlace);
+                    }
                 }
             } else {
-                System.out.println("Robot[" + i + "] still stay in - " + startPlace);
+                System.out.println("Robot still stay in - " + startPlace);
             }
             currentRobot = currentRobot.getNext();
         }
+        System.out.println();
+    }
+    
+    /**
+     * Behaviour, when robots are meeting in the meeting
+     */
+    private void progressRoboMeeting(ListElement currentRobot) {
+        
     }
     
     /**
