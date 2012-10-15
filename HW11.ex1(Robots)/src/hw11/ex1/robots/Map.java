@@ -45,9 +45,8 @@ public class Map {
      * On step of Robo-game system
      */
     public void progress() throws NotExistException{
-        List changingRoboList = this.robotPlace;
-        ListElement currentRobot = changingRoboList.getHead();
-        int amount = changingRoboList.listAmount();
+        ListElement currentRobot = this.robotPlace.getHead();
+        int amount = this.robotPlace.listAmount();
         if (amount == 0) {
             return;
         }
@@ -63,10 +62,11 @@ public class Map {
                 } else {
                     try {
                         this.robotPlace.delete(currentRobot.getId());
+                        //currentRobot = progressRoboMeeting(currentRobot, nextPlace);
                         this.robotPlace.delete(nextPlace);
                     } catch (NotExistException exception) {
                         System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
-                        System.out.println("All robots are dead");
+                        System.out.println("2 robots are dead");
                         break;
                     } finally {
                         System.out.println("Robot die hard meeting at - " + nextPlace);
@@ -75,16 +75,33 @@ public class Map {
             } else {
                 System.out.println("Robot still stay in - " + startPlace);
             }
-            currentRobot = currentRobot.getNext();
+            if (currentRobot != null) {
+                currentRobot = currentRobot.getNext();
+            }
         }
         System.out.println();
     }
     
     /**
-     * Behaviour, when robots are meeting in the meeting
+     * Behaviour, when robots are meeting 
+     * We should determine actions, after deleting 2 robots? 
+     * and process of changing List of Robots, who commit actions 
      */
-    private void progressRoboMeeting(ListElement currentRobot) {
-        
+    private ListElement progressRoboMeeting(ListElement currentRobot, int placeOfSitting) {
+        ListElement helpStep = this.robotPlace.getHead();
+        while (helpStep.getId() != currentRobot.getId()) {
+            helpStep = helpStep.getNext();
+        }// set marker on current robo place
+        while (helpStep.getId() != placeOfSitting || helpStep != null) {
+            helpStep = helpStep.getNext();
+        }// check for existence a chance of robot, that should ne deleted, to make a step 
+        if (helpStep != null) {
+            while (currentRobot.getNext() != helpStep) {
+                currentRobot = currentRobot.getNext();
+            }
+            currentRobot.setNext(currentRobot.getNext());
+        }
+        return currentRobot;
     }
     
     /**
