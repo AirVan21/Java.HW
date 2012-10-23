@@ -64,6 +64,7 @@ public class List {
             if (current.getId() == searchId) {
                 return true;
             }
+            current = current.getNext();
         }
         return false;
     }

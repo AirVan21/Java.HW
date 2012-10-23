@@ -9,7 +9,8 @@ public class HW11Ex1Robots {
         Map map = new Map();
         map.setRobot(1);
         map.setRobot(3);
-        for (int i = 0; i < 50; i++) {
+        map.setRobot(5);
+        for (int i = 0; i < 30; i++) {
             try {
                 map.progress();
             } catch (NotExistException exception) {

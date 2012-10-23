@@ -62,11 +62,12 @@ public class Map {
                 } else {
                     try {
                         this.robotPlace.delete(currentRobot.getId());
-                        //currentRobot = progressRoboMeeting(currentRobot, nextPlace);
                         this.robotPlace.delete(nextPlace);
-                    } catch (NotExistException exception) {
                         System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
                         System.out.println("2 robots are dead");
+                        System.out.println("Amount of robots, who still alive = " + this.robotPlace.listAmount());
+                        currentRobot = progressRoboMeeting(currentRobot);
+                    } catch (NotExistException exception) {
                         break;
                     } finally {
                         System.out.println("Robot die hard meeting at - " + nextPlace);
@@ -87,21 +88,17 @@ public class Map {
      * We should determine actions, after deleting 2 robots? 
      * and process of changing List of Robots, who commit actions 
      */
-    private ListElement progressRoboMeeting(ListElement currentRobot, int placeOfSitting) {
-        ListElement helpStep = this.robotPlace.getHead();
-        while (helpStep.getId() != currentRobot.getId()) {
-            helpStep = helpStep.getNext();
-        }// set marker on current robo place
-        while (helpStep.getId() != placeOfSitting || helpStep != null) {
-            helpStep = helpStep.getNext();
-        }// check for existence a chance of robot, that should ne deleted, to make a step 
-        if (helpStep != null) {
-            while (currentRobot.getNext() != helpStep) {
-                currentRobot = currentRobot.getNext();
+    private ListElement progressRoboMeeting(ListElement currentRobot) {
+        ListElement helpRobot = currentRobot;
+        while (helpRobot != null) {
+            if (helpRobot.getNext() != null) {
+                if (!this.robotPlace.exist(helpRobot.getNext().getId())) {
+                    helpRobot.setNext(helpRobot.getNext().getNext());
+                }
             }
-            currentRobot.setNext(currentRobot.getNext());
-        }
-        return currentRobot;
+            helpRobot = helpRobot.getNext();
+        }   
+       return currentRobot;
     }
     
     /**
