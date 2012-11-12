@@ -8,10 +8,10 @@ public class Linux implements OS{
     /**
      * Constructor
      */
-    public Linux(boolean status) {
+    public Linux(boolean status, int infectionPercent) {
         this.infectionStatus = status;
         // such primary values just to test system
-        this.infectionAbility = 100;
+        this.infectionAbility = infectionPercent;
     }
     
     @Override

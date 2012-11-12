@@ -41,7 +41,7 @@ public class NetWorkTest {
      */
     @Test
     public void testProgressGlobal() {
-        NetWork localNet = new NetWork();
+        NetWork localNet = new NetWork(windows, linux, chrome);
         assertTrue(localNet.hasSafe());
         localNet.progress();
         assertFalse(localNet.hasSafe());
@@ -52,7 +52,7 @@ public class NetWorkTest {
      */
     @Test
     public void testProgressLocal() {
-        NetWork localNet = new NetWork();
+        NetWork localNet = new NetWork(windows, linux, chrome);
         PC[] pcAmount = localNet.getComputers();
         // We're cheking start values
         assertTrue(pcAmount[1].isInfected());
@@ -85,7 +85,7 @@ public class NetWorkTest {
      */
     @Test
     public void testHasSafe() {
-        NetWork localNet = new NetWork();
+        NetWork localNet = new NetWork(windows, linux, chrome);
         assertTrue(localNet.hasSafe());
         PC[] pcAmount = localNet.getComputers();
         for (int i = 1; i < pcAmount.length; i++) {
@@ -95,4 +95,8 @@ public class NetWorkTest {
         pcAmount[0].attack();
         assertFalse(localNet.hasSafe());
     }
+    
+    private final int linux = 100;
+    private final int windows = 100;
+    private final int chrome = 100;
 }

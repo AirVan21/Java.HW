@@ -8,10 +8,10 @@ public class Chrome implements OS{
     /**
      * Constructor
      */
-    public Chrome(boolean status) {
+    public Chrome(boolean status, int infectionPercent) {
         this.infectionStatus = status;
         // such primary values just to test system
-        this.infectionAbility = 100;
+        this.infectionAbility = infectionPercent;
     }
     
     @Override
@@ -21,7 +21,7 @@ public class Chrome implements OS{
     
     @Override
     public void virusAttack() {
-        Randomizer random = new Randomizer(this.infectionAbility);
+        Randomizer random = new Randomizer(this.infectionAbility());
         if (random.getResult()) {
             infectionStatus = true;
         }

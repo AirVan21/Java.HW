@@ -5,13 +5,13 @@ package hw10.ex2.network;
  */
 public class NetWork {
     
-    public NetWork(){
+    public NetWork(int windowsInfectionPossibility, int linuxInfectionPossibility, int chromInfectionPossibility){
         this.computers = new PC[this.connection.length];
-        this.computers[0] = new PC(new Windows(false));
-        this.computers[1] = new PC(new Windows(true));
-        this.computers[2] = new PC(new Linux(false));
-        this.computers[3] = new PC(new Linux(false));
-        this.computers[4] = new PC(new Chrome(false));
+        this.computers[0] = new PC(new Windows(false, windowsInfectionPossibility));
+        this.computers[1] = new PC(new Windows(true, windowsInfectionPossibility));
+        this.computers[2] = new PC(new Linux(false, linuxInfectionPossibility));
+        this.computers[3] = new PC(new Linux(false, linuxInfectionPossibility));
+        this.computers[4] = new PC(new Chrome(false, chromInfectionPossibility));
     }
     
     /**
@@ -86,4 +86,5 @@ public class NetWork {
         {0, 1, 1 , 0, 1},
         {1, 0, 0 , 1, 0},
     };
+    
 }
