@@ -22,6 +22,6 @@ public interface OS {
     /**
      * Tryin' to change status of OS
      */
-    public void virusAttack();
+    public void virusAttack(int iterationNum);
     
 }

@@ -21,12 +21,13 @@ public class Windows implements OS{
     }
     
     @Override
-    public void virusAttack() {
-        if (updateInfectionStatus) {
+    public void virusAttack(int iterationNum) {
+        if (updateInfectionStatus && iterationNum != this.timeOfUpdate) {
             this.infectionStatus = true;
         } else {
             if (random.getResult()) {
                 this.updateInfectionStatus = true;
+                this.timeOfUpdate = iterationNum;
             }
         }
     }
@@ -55,4 +56,6 @@ public class Windows implements OS{
      * For discret mode
      */
     private boolean updateInfectionStatus;
+    
+    private int timeOfUpdate;
 }

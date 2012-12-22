@@ -24,8 +24,8 @@ public class PC {
     /**
      * Commit virus attack
      */
-    public void attack() {
-        this.system.virusAttack();
+    public void attack(int iterationNum) {
+        this.system.virusAttack(iterationNum);
     }
     
     /**

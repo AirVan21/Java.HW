@@ -12,20 +12,22 @@ public class NetWork {
         this.computers[2] = new PC(new Linux(false, linuxInfectionPossibility));
         this.computers[3] = new PC(new Linux(false, linuxInfectionPossibility));
         this.computers[4] = new PC(new Chrome(false, chromInfectionPossibility));
+        this.iterationCounter = 0;
     }
     
     /**
      * Makes system cooperation step
      */
     public void progress() {
+        this.iterationCounter++;
         for (int i = 0; i < this.computers.length; i++) {
             for (int j = 0; j < this.computers.length; j++) {
                 // check connection and infection for virus attack possibility
                 if ((this.connection[i][j] == 1) && (this.computers[i].isInfected() || this.computers[j].isInfected())) {
                     if (this.computers[i].isInfected()) {
-                        this.computers[j].attack();
+                        this.computers[j].attack(this.iterationCounter);
                     } else {
-                        this.computers[i].attack();
+                        this.computers[i].attack(this.iterationCounter);
                     }
                 }
             }
@@ -75,6 +77,9 @@ public class NetWork {
      * Current PCs
      */
     private PC[] computers;
+    
+    
+    private int iterationCounter;
     
     /**
      * Describes PC connections

@@ -41,10 +41,10 @@ public class NetWorkTest {
      */
     @Test
     public void testProgressGlobal() {
-//        NetWork localNet = new NetWork(windows, linux, chrome);
-//        assertTrue(localNet.hasSafe());
-//        localNet.progress();
-//        assertFalse(localNet.hasSafe());
+        NetWork localNet = new NetWork(windows, linux, chrome);
+        assertTrue(localNet.hasSafe());
+        localNet.progress();
+        assertTrue(localNet.hasSafe());
     }
     
     /**
@@ -61,33 +61,24 @@ public class NetWorkTest {
                 assertFalse(pcAmount[i].isInfected());
             }
         }
+        // first iteration
         // 2 attacks 1
-//        pcAmount[0].attack();
-//        assertTrue(pcAmount[0].isInfected());
+        // 2 attacks 4
+        localNet.progress();
         localNet.progress();
         assertTrue(pcAmount[0].isInfected());
+        assertTrue(pcAmount[3].isInfected());
         
-//        for (int i = 0; i < pcAmount.length; i++) {
-//            if (i != 1 || i != 0) {
-//                assertFalse(pcAmount[i].isInfected());
-//            }
-//        }
-             
+        assertFalse(pcAmount[4].isInfected());
+        assertFalse(pcAmount[2].isInfected());
         
-//        // 1 attacks 3
-//        pcAmount[2].attack();
-//        assertTrue(pcAmount[2].isInfected());
-//        // 1 attacks 5
-//        pcAmount[4].attack();
-//        assertTrue(pcAmount[4].isInfected());
-//        // 2 attacks 1 , which is already infected
-//        pcAmount[0].attack();
-//        assertTrue(pcAmount[0].isInfected());
-//        // 2 attacks 4
-//        pcAmount[3].attack();
-//        assertTrue(pcAmount[3].isInfected());
-//        // All PC infected
-//        assertFalse(localNet.hasSafe());
+        // second iteration
+        // 1 attacks 3
+        // 4 attack 5
+        localNet.progress();           
+        for (int i = 0; i < pcAmount.length; i++) {
+            assertTrue(pcAmount[i].isInfected());
+        }
     }
 
     /**

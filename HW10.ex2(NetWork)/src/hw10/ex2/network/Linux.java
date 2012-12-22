@@ -21,12 +21,13 @@ public class Linux implements OS{
     }
     
     @Override
-    public void virusAttack() {
-        if (updateInfectionStatus) {
+    public void virusAttack(int iterationNum) {
+        if (updateInfectionStatus && iterationNum != this.timeOfUpdate) {
             this.infectionStatus = true;
         } else {
             if (random.getResult()) {
                 this.updateInfectionStatus = true;
+                this.timeOfUpdate = iterationNum;
             }
         }
     }
@@ -55,5 +56,7 @@ public class Linux implements OS{
      * For discret mode
      */
     private boolean updateInfectionStatus;
+    
+    private int timeOfUpdate;
 
 }
