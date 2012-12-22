@@ -49,10 +49,10 @@ public class RobotDecision {
         return current.getId();
     }
     
-    /**
-     * Amount of nodes, where robot could go
-     */
-    private List possibleStep;
+//    /**
+//     * Amount of nodes, where robot could go
+//     */
+//    private List possibleStep;
     
     /**
      * Place of robot(node number)

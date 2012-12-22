@@ -41,46 +41,72 @@ public class Map {
         return true;
     }
     
-    /**
-     * On step of Robo-game system
-     */
-    public void progress() throws NotExistException{
+//    /**
+//     * On step of Robo-game system
+//     */
+//    public void progress() throws NotExistException{
+//        ListElement currentRobot = this.robotPlace.getHead();
+//        int amount = this.robotPlace.listAmount();
+//        if (amount == 0) {
+//            return;
+//        }
+//        for (int i = 1; i <= amount; i++) {
+//            int startPlace = currentRobot.getId();
+//            RobotDecision event = new RobotDecision(this.scene, currentRobot.getId());
+//            int nextPlace = event.findNextPlace();
+//            if (currentRobot.getId() != nextPlace) {
+//                if (this.isEmpty(nextPlace)) {
+//                    this.robotPlace.delete(currentRobot.getId());
+//                    this.robotPlace.add(true, nextPlace);
+//                    System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
+//                } else {
+//                    try {
+//                        this.robotPlace.delete(currentRobot.getId());
+//                        this.robotPlace.delete(nextPlace);
+//                        System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
+//                        currentRobot = progressRoboMeeting(currentRobot);
+//                    } catch (NotExistException exception) {
+//                        break;
+//                    } finally {
+//                        System.out.println("2 robots are dead");
+//                        System.out.println("Robot die hard meeting at - " + nextPlace);
+//                        System.out.println("Amount of robots, who still alive = " + this.robotPlace.listAmount());
+//                    }
+//                }
+//            } else {
+//                System.out.println("Robot still stay in - " + startPlace);
+//            }
+//            if (currentRobot != null) {
+//                currentRobot = currentRobot.getNext();
+//            }
+//        }
+//        System.out.println();
+//    }
+    public void progress() throws NotExistException {
         ListElement currentRobot = this.robotPlace.getHead();
+        List banList = new List();
         int amount = this.robotPlace.listAmount();
-        if (amount == 0) {
-            return;
-        }
-        for (int i = 1; i <= amount; i++) {
-            int startPlace = currentRobot.getId();
-            RobotDecision event = new RobotDecision(this.scene, currentRobot.getId());
-            int nextPlace = event.findNextPlace();
-            if (currentRobot.getId() != nextPlace) {
-                if (this.isEmpty(nextPlace)) {
-                    this.robotPlace.delete(currentRobot.getId());
-                    this.robotPlace.add(true, nextPlace);
-                    System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
+        while (currentRobot != null) {
+            if (!banList.exist(currentRobot.getId())) {
+                int startPlace = currentRobot.getId();
+                RobotDecision decision = new RobotDecision(this.scene, currentRobot.getId());
+                int nextPlace = decision.findNextPlace();
+                if (startPlace == nextPlace) {
+                    System.out.println("Robot still stay in - " + startPlace);
                 } else {
-                    try {
-                        this.robotPlace.delete(currentRobot.getId());
+                    // delete robot from start position and put robot at next position
+                    if (this.isEmpty(nextPlace)) {
+                        this.robotPlace.delete(startPlace);
                         this.robotPlace.delete(nextPlace);
                         System.out.println("Robot transfered from " + startPlace + " to " + nextPlace);
-                        System.out.println("2 robots are dead");
-                        System.out.println("Amount of robots, who still alive = " + this.robotPlace.listAmount());
-                        currentRobot = progressRoboMeeting(currentRobot);
-                    } catch (NotExistException exception) {
-                        break;
-                    } finally {
-                        System.out.println("Robot die hard meeting at - " + nextPlace);
+                    } else {
+                        // 2 robots in one node
                     }
                 }
-            } else {
-                System.out.println("Robot still stay in - " + startPlace);
-            }
-            if (currentRobot != null) {
-                currentRobot = currentRobot.getNext();
+
             }
         }
-        System.out.println();
+
     }
     
     /**
