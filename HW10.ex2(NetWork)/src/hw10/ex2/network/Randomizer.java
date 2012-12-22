@@ -14,13 +14,13 @@ public class Randomizer {
     public Randomizer(int possibility) {
         this.answer = false;
         this.chance = possibility;
+        this.random = new Random();
     }
     
     /**
      * Gives random test solution
      */
     public boolean getResult() {
-        Random random = new Random();
         int help = random.nextInt(100);
         if (help < this.chance) {
             this.answer = true;
@@ -37,4 +37,9 @@ public class Randomizer {
      * Virus attack success
      */
     private int chance;
+    
+    /**
+     * current Random function
+     */
+    private Random random;
 }

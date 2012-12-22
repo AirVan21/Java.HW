@@ -12,6 +12,7 @@ public class Windows implements OS{
         this.infectionStatus = status;
         // such primary values just to test system
         this.infectionAbility = infectionPercent;
+        this.random = new Randomizer(this.infectionAbility);
     }
     
     @Override
@@ -21,14 +22,17 @@ public class Windows implements OS{
     
     @Override
     public void virusAttack() {
-        Randomizer random = new Randomizer(this.infectionAbility());
-        if (random.getResult()) {
-            infectionStatus = true;
+        if (updateInfectionStatus) {
+            this.infectionStatus = true;
+        } else {
+            if (random.getResult()) {
+                this.updateInfectionStatus = true;
+            }
         }
     }
     
     @Override
-    public int infectionAbility() {
+    public final int infectionAbility() {
         return this.infectionAbility;
     }
 
@@ -41,5 +45,14 @@ public class Windows implements OS{
      * Gives information about virus possibility
      */
     private int infectionAbility;
-
+    
+    /**
+     * Random for our network
+     */
+    private Randomizer random;
+    
+    /**
+     * For discret mode
+     */
+    private boolean updateInfectionStatus;
 }
