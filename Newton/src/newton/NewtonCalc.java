@@ -98,7 +98,7 @@ public class NewtonCalc {
         double upLim = this.upLimPlus();
         double lowLim = this.lowLimNeg();
         // Choosing delta for intervals
-        double delta = (Math.abs(upLim) + Math.abs(lowLim)) / 100;
+        double delta = (Math.abs(upLim) + Math.abs(lowLim)) / 10000;
         System.out.println("delta = " + delta);
         double point1 = lowLim;
         double point2 = lowLim + delta;
@@ -109,11 +109,11 @@ public class NewtonCalc {
             value1 = calcValue(point1);
             value2 = calcValue(point2);
             if ((value1 * value2) <= 0){
-                this.newtonAlg(point1 + delta / 2);
                 step++;
                 System.out.println(step + ")");
                 System.out.println("f(" + point1 + ") = " + value1);
                 System.out.println("f(" + point2 + ") = " + value2);
+                newtonAlg(point1 + delta / 2);
             }
             point1 = point2;
             point2 = point2 + delta;
@@ -138,14 +138,18 @@ public class NewtonCalc {
     /*
      * Calculating value of derivative of current function in point
      */
-    private double calcDerivative() {
-        for (int  i = 0; i < equationCoef.length - 1; i++) {
+    private double calcDerivative(double point) {
+        double value = 0;
+        for (int  i = 0; i < equationCoef.length; i++) {
             if (equationPower[i] != 0) {
                 if (equationPower[i] == 1) {
-                    value = value + equationCoef[i] 
+                    value = value + equationCoef[i]; 
+                } else {
+                    value = value + equationCoef[i] * equationPower[i] * Math.pow(point, equationPower[i] - 1);
                 }
             }
         }
+        return value;
     }
     
     /**
@@ -153,8 +157,17 @@ public class NewtonCalc {
      * @param point in root interval
      * @return 
      */
-    private double newtonAlg(double point) {
-        return 0;
+    private void newtonAlg(double point) {
+        int count = 1;
+        double step = point;
+        double nextStep = point - calcValue(point)/calcDerivative(point);
+        double epsilon = Math.pow(10, -7);
+        while (Math.abs(nextStep - step) > epsilon) {
+            count++;
+            step = nextStep;
+            nextStep = step - calcValue(step)/calcDerivative(step);
+        }
+        System.out.println("Step №" + count + ", Root = " + nextStep);
     }
     
     /*

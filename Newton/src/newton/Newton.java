@@ -18,37 +18,45 @@ public class Newton {
         // First line contains int dimension value
         // Second line contains monoms' power values
         // Third line contains coefficients, startin' with major monom coefficient 
-        String filePath = "c:\\NumMath\\EQ1.txt";
+        String filePath = "c:\\NumMath\\EQ3.txt";
         try {
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String line = reader.readLine();
             String[] lineOne = line.split(" ");
             int dimension = lineOne.length;
-            
+
             double[] coefArray = new double[dimension];
             int[] powArray = new int[dimension];
             line = reader.readLine();
             String[] lineTwo = line.split(" ");
             // Splitting coefficient string, using " " as a selector
             for (int j = 0; j < dimension; j++) {
-                int  power = Integer.parseInt(lineOne[j]);
+                int power = Integer.parseInt(lineOne[j]);
                 double value = Double.parseDouble(lineTwo[j]);
                 powArray[j] = power;
                 coefArray[j] = value;
-                System.out.print(coefArray[j]);
-                System.out.print("x^(" + (powArray[j]) + ") ");
-            } 
-            System.out.println("= 0");
-            
+                if (coefArray[j] < 0) {
+                    System.out.print(" " + coefArray[j]);
+                } else {
+                    System.out.print(" + " + coefArray[j]);
+
+                }
+                if (powArray[j] != 0) {
+                    System.out.print("*" + "x^(" + (powArray[j]) + ")");
+                }
+            }
+            System.out.println(" = 0");
+            System.out.println();
+
             NewtonCalc mainObj = new NewtonCalc(coefArray, powArray);
-            System.out.println("Up = " + mainObj.upLimPlus());
-            System.out.println("Low = " + mainObj.lowLimNeg());
+            System.out.println("UpLimPositive = " + mainObj.upLimPlus());
+            System.out.println("LowLimNegative = " + mainObj.lowLimNeg());
             mainObj.findSignChange();
         } catch (FileNotFoundException ex) {
-             System.out.println(ex.toString());
+            System.out.println(ex.toString());
         } catch (IOException ex) {
             System.out.println(ex.toString());
         }
-        
+
     }
 }
