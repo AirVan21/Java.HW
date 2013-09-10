@@ -80,22 +80,6 @@ public class NetWorkTest {
             assertTrue(pcAmount[i].isInfected());
         }
     }
-
-    /**
-     * Test of hasSafe method, of class NetWork.
-     */
-    @Test
-    public void testHasSafe() {
-//        NetWork localNet = new NetWork(windows, linux, chrome);
-//        assertTrue(localNet.hasSafe());
-//        PC[] pcAmount = localNet.getComputers();
-//        for (int i = 1; i < pcAmount.length; i++) {
-//            pcAmount[i].attack();
-//        }
-//        assertTrue(localNet.hasSafe());
-//        pcAmount[0].attack();
-//        assertFalse(localNet.hasSafe());
-    }
     
     private final int linux = 100;
     private final int windows = 100;
